@@ -200,6 +200,14 @@
             50% { transform: translateX(10px); }
         }
 
+        /* Hero Animation Container */
+        .hero-animation {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
         /* AI Animation - Enhanced */
         .ai-brain {
             width: 400px;
@@ -716,110 +724,358 @@
             transform: translateY(-2px);
             box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
         }
+
+        /* Mobile Menu Button */
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: #10b981;
+            font-size: 24px;
+            cursor: pointer;
+            padding: 5px;
         }
 
-        /* Responsive */
+        .nav-links.mobile-open {
+            display: flex;
+        }
+
+        /* Responsive - Tablet */
+        @media (max-width: 1024px) {
+            .hero {
+                padding: 0 30px;
+            }
+            
+            .section {
+                padding: 80px 30px;
+            }
+            
+            .ai-brain {
+                width: 350px;
+                height: 350px;
+            }
+        }
+
+        /* Responsive - Mobile Large */
         @media (max-width: 768px) {
             .header {
-                padding: 15px 25px;
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 15px;
+                padding: 15px 20px;
+                position: relative;
             }
 
             .nav-links {
+                display: none;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(0, 0, 0, 0.98);
+                backdrop-filter: blur(10px);
+                flex-direction: column;
+                padding: 20px;
                 gap: 20px;
+                border-top: 1px solid #1a1a1a;
+            }
+
+            .mobile-menu-btn {
+                display: block;
             }
             
             .hero {
                 flex-direction: column;
                 text-align: center;
-                padding: 0 25px;
-                margin-top: 120px;
+                padding: 0 20px;
+                margin-top: 100px;
+                min-height: auto;
+                padding-bottom: 40px;
             }
 
             .hero-content {
                 max-width: 100%;
+                margin-bottom: 40px;
             }
             
             .hero-title {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
+                margin-bottom: 20px;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
             }
 
             .hero-buttons {
                 flex-direction: column;
                 align-items: center;
+                gap: 15px;
+                margin-bottom: 30px;
             }
 
             .btn-primary, .btn-secondary {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
                 text-align: center;
+                padding: 15px 20px;
+            }
+            
+            .campaign-flow {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px;
+                padding: 20px 15px;
+                margin-top: 30px;
+            }
+
+            .flow-step {
+                justify-content: center;
+                font-size: 14px;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+                font-size: 20px;
+            }
+
+            .ai-brain {
+                width: 280px;
+                height: 280px;
+            }
+
+            .brain-core {
+                width: 140px;
+                height: 140px;
+            }
+
+            .node {
+                width: 18px;
+                height: 18px;
             }
             
             .how-it-works {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            
-            .section {
-                padding: 60px 25px;
+
+            .side-section {
+                padding: 30px 20px;
+            }
+
+            .side-title {
+                font-size: 1.8rem;
+                gap: 10px;
+            }
+
+            .side-icon {
+                font-size: 2rem;
             }
             
-            .campaign-flow {
-                flex-direction: column;
-                text-align: center;
+            .section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 40px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
                 gap: 20px;
             }
 
-            .flow-arrow {
-                transform: rotate(90deg);
-            }
-
-            .ai-brain {
-                width: 300px;
-                height: 300px;
-                margin-top: 40px;
+            .feature-card {
+                padding: 25px 20px;
             }
 
             .signup-form {
                 margin: 20px;
-                padding: 30px;
+                padding: 30px 20px;
+            }
+
+            .form-input {
+                padding: 12px;
+                font-size: 16px;
+            }
+
+            .cta-features {
+                flex-direction: column;
+                gap: 15px;
+                align-items: center;
+            }
+
+            footer {
+                padding: 40px 20px 20px !important;
+            }
+
+            footer > div:first-child {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+                text-align: center !important;
             }
         }
 
+        /* Mobile Small */
         @media (max-width: 480px) {
-            body {
-                font-size: 14px;
-            }
-
             .header {
-                padding: 10px 15px;
+                padding: 12px 15px;
             }
 
             .logo {
                 font-size: 24px;
             }
 
+            .tagline {
+                font-size: 9px;
+            }
+
+            .hero {
+                padding: 0 15px;
+                margin-top: 80px;
+            }
+
             .hero-title {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                line-height: 1.1;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .btn-primary, .btn-secondary {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
+
+            .campaign-flow {
+                padding: 15px;
+                margin-top: 25px;
+            }
+
+            .flow-step {
+                font-size: 13px;
+            }
+
+            .flow-step span:first-child {
+                font-size: 16px;
+            }
+
+            .ai-brain {
+                width: 240px;
+                height: 240px;
+            }
+
+            .brain-core {
+                width: 120px;
+                height: 120px;
+            }
+
+            .node {
+                width: 16px;
+                height: 16px;
+            }
+
+            .section {
+                padding: 50px 15px;
             }
 
             .section-title {
-                font-size: 2rem;
+                font-size: 1.9rem;
+            }
+
+            .section-subtitle {
+                font-size: 0.95rem;
+            }
+
+            .side-section {
+                padding: 25px 15px;
             }
 
             .side-title {
                 font-size: 1.6rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
             }
 
-            .features-grid {
-                grid-template-columns: 1fr;
+            .side-icon {
+                font-size: 1.8rem;
+            }
+
+            .step-list li {
+                font-size: 14px;
+                line-height: 1.6;
+                padding-left: 25px;
+                margin-bottom: 15px;
+            }
+
+            .feature-card {
+                padding: 20px 15px;
+            }
+
+            .feature-title {
+                font-size: 1.2rem;
+            }
+
+            .feature-description {
+                font-size: 14px;
+            }
+
+            .signup-form {
+                margin: 15px;
+                padding: 25px 15px;
+            }
+
+            .form-input {
+                padding: 10px;
+                font-size: 15px;
+            }
+
+            .submit-btn {
+                padding: 15px;
+                font-size: 16px;
+            }
+        }
+
+        /* Extra Small Mobile */
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 0.95rem;
             }
 
             .ai-brain {
-                width: 250px;
-                height: 250px;
+                width: 200px;
+                height: 200px;
+            }
+
+            .brain-core {
+                width: 100px;
+                height: 100px;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+
+            .side-title {
+                font-size: 1.4rem;
+            }
+
+            .campaign-flow {
+                padding: 12px;
+            }
+
+            .flow-step {
+                font-size: 12px;
             }
         }
     </style>
@@ -836,6 +1092,7 @@
             <a href="#how-it-works">How it works</a>
             <a href="#cta" class="cta-button">Get early access</a>
         </nav>
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">☰</button>
     </header>
 
     <!-- Hero Section -->
@@ -1004,16 +1261,6 @@
             </div>
 
             <div class="form-group">
-               <!-- <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
-                <select id="platformHelp" name="platform_help" class="form-input" required>
-                    <option value="" disabled selected>Choose one</option>
-                    <option value="yes">Yes</option>
-                    <option value="no">No</option>
-                    <option value="maybe">Maybe / Unsure</option>
-                </select> -->
-            </div>
-
-            <div class="form-group">
                 <label for="oneThing" class="form-label">What's one thing that would make this a lot more useful for you? *</label>
                 <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
             </div>
@@ -1049,7 +1296,6 @@
                 <h4 style="color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 20px;">Company</h4>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
                     <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">About</a>
-                   <!-- <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Careers</a> -->
                     <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Contact</a>
                 </div>
             </div>
@@ -1062,12 +1308,22 @@
     </footer>
 
     <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('mobile-open');
+        }
+
         // Smooth scrolling for navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
                 if (target) {
+                    // Close mobile menu if open
+                    const navLinks = document.querySelector('.nav-links');
+                    navLinks.classList.remove('mobile-open');
+                    
                     target.scrollIntoView({
                         behavior: 'smooth',
                         block: 'start'
@@ -1090,7 +1346,6 @@
                 instagram: this.querySelector('#instagram').value,
                 last_campaign: this.querySelector('#lastCampaign').value,
                 worst_part: this.querySelector('#worstPart').value,
-                platform_help: this.querySelector('#platformHelp').value,
                 one_thing: this.querySelector('#oneThing').value,
                 timestamp: new Date().toISOString(),
                 id: Date.now() + Math.random().toString(36).substr(2, 9)
@@ -1132,7 +1387,7 @@
         // Intersection Observer for animations
         const observerOptions = {
             threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
+            rootMargin: '0px 0px -50px 0px'
         };
 
         const observer = new IntersectionObserver((entries) => {
@@ -1216,7 +1471,7 @@
             });
         });
 
-        // Mobile menu toggle (if needed in future)
+        // Header hide on scroll down, show on scroll up
         const header = document.querySelector('.header');
         let lastScrollY = window.scrollY;
 
@@ -1229,22 +1484,15 @@
             lastScrollY = window.scrollY;
         });
 
-        // Add responsive footer styles
-        const mediaQuery = window.matchMedia('(max-width: 768px)');
-        function handleTabletChange(e) {
-            const footerGrid = document.querySelector('footer > div:first-child');
-            if (e.matches) {
-                footerGrid.style.gridTemplateColumns = '1fr';
-                footerGrid.style.gap = '40px';
-                footerGrid.style.textAlign = 'center';
-            } else {
-                footerGrid.style.gridTemplateColumns = '2fr 1fr 1fr';
-                footerGrid.style.gap = '60px';
-                footerGrid.style.textAlign = 'left';
+        // Close mobile menu when clicking outside
+        document.addEventListener('click', function(e) {
+            const navLinks = document.querySelector('.nav-links');
+            const menuBtn = document.querySelector('.mobile-menu-btn');
+            
+            if (!navLinks.contains(e.target) && !menuBtn.contains(e.target)) {
+                navLinks.classList.remove('mobile-open');
             }
-        }
-        mediaQuery.addListener(handleTabletChange);
-        handleTabletChange(mediaQuery);
+        });
     </script>
 </body>
 </html>
