@@ -18,26 +18,6 @@
             overflow-x: hidden;
         }
 
-        @media (max-width:768px){
-            .header {
-                padding: 15px 20px;
-                flex-direction: column;
-                align-items: flex-start;
-            }
-
-        }
-
-
-        @media (max-width: 480px){
-            body{
-                font-size: 14px;
-            }
-            .header{
-                padding: 10px 15px;
-            }
-
-        }
-
         /* Header */
         .header {
             display: flex;
@@ -61,7 +41,7 @@
         .logo {
             font-size: 28px;
             font-weight: bold;
-            color: #00ff88;
+            color: #10b981;
             text-decoration: none;
         }
 
@@ -85,11 +65,11 @@
         }
 
         .nav-links a:hover {
-            color: #00ff88;
+            color: #10b981;
         }
 
         .cta-button {
-            background: #00ff88;
+            background: #10b981;
             color: #000;
             padding: 12px 24px;
             border-radius: 25px;
@@ -99,9 +79,9 @@
         }
 
         .cta-button:hover {
-            background: #00cc6b;
+            background: #059669;
             transform: translateY(-2px);
-            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+            box-shadow: 0 10px 20px rgba(16, 185, 129, 0.3);
         }
 
         /* Hero Section */
@@ -125,7 +105,7 @@
             font-weight: 700;
             line-height: 1.2;
             margin-bottom: 30px;
-            background: linear-gradient(135deg, #ffffff, #00ff88);
+            background: linear-gradient(135deg, #ffffff, #10b981);
             background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -151,7 +131,7 @@
         }
 
         .btn-primary {
-            background: #00ff88;
+            background: #10b981;
             color: #000;
             padding: 15px 30px;
             border-radius: 30px;
@@ -163,15 +143,15 @@
         }
 
         .btn-primary:hover {
-            background: #00cc6b;
+            background: #059669;
             transform: translateY(-3px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
         }
 
         .btn-secondary {
-            color: #00ff88;
+            color: #10b981;
             padding: 15px 30px;
-            border: 2px solid #00ff88;
+            border: 2px solid #10b981;
             border-radius: 30px;
             text-decoration: none;
             font-weight: 600;
@@ -179,7 +159,7 @@
         }
 
         .btn-secondary:hover {
-            background: #00ff88;
+            background: #10b981;
             color: #000;
         }
 
@@ -190,28 +170,28 @@
             gap: 30px;
             margin-top: 40px;
             padding: 20px;
-            border: 2px solid #00ff88;
+            border: 2px solid #10b981;
             border-radius: 15px;
-            background: rgba(0, 255, 136, 0.1);
+            background: rgba(16, 185, 129, 0.1);
             animation: pulseGlow 2s ease-in-out infinite alternate;
         }
 
         @keyframes pulseGlow {
-            0% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
-            100% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+            0% { box-shadow: 0 0 10px rgba(16, 185, 129, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(16, 185, 129, 0.6); }
         }
 
         .flow-step {
             display: flex;
             align-items: center;
             gap: 10px;
-            color: #00ff88;
+            color: #10b981;
             font-weight: 600;
         }
 
         .flow-arrow {
             font-size: 24px;
-            color: #00ff88;
+            color: #10b981;
             animation: slideRight 1.5s ease-in-out infinite;
         }
 
@@ -237,14 +217,14 @@
         .brain-core {
             width: 180px;
             height: 180px;
-            background: linear-gradient(135deg, #00ff88, #00cc6b, #009955);
+            background: linear-gradient(135deg, #10b981, #059669, #047857);
             border-radius: 50%;
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
             box-shadow: 
-                0 0 60px rgba(0, 255, 136, 0.8),
+                0 0 60px rgba(16, 185, 129, 0.8),
                 inset 0 0 30px rgba(255, 255, 255, 0.1);
             animation: corePulse 3s ease-in-out infinite;
             overflow: hidden;
@@ -269,11 +249,11 @@
         @keyframes corePulse {
             0%, 100% { 
                 transform: translate(-50%, -50%) scale(1);
-                box-shadow: 0 0 60px rgba(0, 255, 136, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.1);
+                box-shadow: 0 0 60px rgba(16, 185, 129, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.1);
             }
             50% { 
                 transform: translate(-50%, -50%) scale(1.15);
-                box-shadow: 0 0 100px rgba(0, 255, 136, 1), inset 0 0 50px rgba(255, 255, 255, 0.2);
+                box-shadow: 0 0 100px rgba(16, 185, 129, 1), inset 0 0 50px rgba(255, 255, 255, 0.2);
             }
         }
 
@@ -286,11 +266,11 @@
         .node {
             width: 24px;
             height: 24px;
-            background: radial-gradient(circle, #00ff88, #00cc6b);
+            background: radial-gradient(circle, #10b981, #059669);
             border-radius: 50%;
             position: absolute;
             box-shadow: 
-                0 0 25px rgba(0, 255, 136, 1),
+                0 0 25px rgba(16, 185, 129, 1),
                 inset 0 0 10px rgba(255, 255, 255, 0.3);
             animation: nodeGlow 4s ease-in-out infinite;
             border: 2px solid rgba(255, 255, 255, 0.2);
@@ -318,12 +298,12 @@
             0%, 100% { 
                 opacity: 0.7; 
                 transform: scale(1);
-                box-shadow: 0 0 25px rgba(0, 255, 136, 1), inset 0 0 10px rgba(255, 255, 255, 0.3);
+                box-shadow: 0 0 25px rgba(16, 185, 129, 1), inset 0 0 10px rgba(255, 255, 255, 0.3);
             }
             50% { 
                 opacity: 1; 
                 transform: scale(1.2);
-                box-shadow: 0 0 40px rgba(0, 255, 136, 1.5), inset 0 0 15px rgba(255, 255, 255, 0.5);
+                box-shadow: 0 0 40px rgba(16, 185, 129, 1.5), inset 0 0 15px rgba(255, 255, 255, 0.5);
             }
         }
 
@@ -339,7 +319,7 @@
         .connection {
             position: absolute;
             height: 3px;
-            background: linear-gradient(90deg, transparent, #00ff88, #ffffff, #00ff88, transparent);
+            background: linear-gradient(90deg, transparent, #10b981, #ffffff, #10b981, transparent);
             animation: dataFlow 3s ease-in-out infinite;
             border-radius: 2px;
             opacity: 0.8;
@@ -353,7 +333,7 @@
             50% { 
                 opacity: 1; 
                 transform: scaleX(1);
-                box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+                box-shadow: 0 0 10px rgba(16, 185, 129, 0.8);
             }
         }
 
@@ -369,10 +349,10 @@
             position: absolute;
             width: 4px;
             height: 4px;
-            background: #00ff88;
+            background: #10b981;
             border-radius: 50%;
             animation: particleFloat 8s linear infinite;
-            box-shadow: 0 0 6px rgba(0, 255, 136, 0.8);
+            box-shadow: 0 0 6px rgba(16, 185, 129, 0.8);
         }
 
         @keyframes particleFloat {
@@ -404,7 +384,7 @@
         /* Orbit Rings */
         .orbit-ring {
             position: absolute;
-            border: 1px solid rgba(0, 255, 136, 0.3);
+            border: 1px solid rgba(16, 185, 129, 0.3);
             border-radius: 50%;
             top: 50%;
             left: 50%;
@@ -443,7 +423,7 @@
             font-weight: 700;
             text-align: center;
             margin-bottom: 20px;
-            color: #00ff88;
+            color: #10b981;
         }
 
         .section-subtitle {
@@ -454,7 +434,7 @@
             line-height: 1.6;
         }
 
-        /* How it Works - Split Layout */
+        /* How it Works - Clean Layout */
         .how-it-works {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -462,82 +442,132 @@
             margin-top: 60px;
         }
 
-        .side-card {
-            background: linear-gradient(135deg, #111111, #1a1a1a);
-            border: 2px solid #00ff88;
-            border-radius: 20px;
-            padding: 40px;
+        .side-section {
             position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            padding: 40px;
+            animation: fadeInUp 0.8s ease-out;
         }
 
-        .side-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
-        }
-
-        .side-card::before {
+        .side-section::before {
             content: '';
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, #00ff88, #00cc6b);
-            animation: shimmer 2s ease-in-out infinite;
+            bottom: 0;
+            background: linear-gradient(135deg, transparent, rgba(16, 185, 129, 0.05), transparent);
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            z-index: -1;
         }
 
-        @keyframes shimmer {
-            0%, 100% { opacity: 0.5; }
-            50% { opacity: 1; }
+        .side-section:hover::before {
+            background: linear-gradient(135deg, transparent, rgba(16, 185, 129, 0.1), transparent);
+            transform: scale(1.02);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .side-title {
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
-            color: #00ff88;
+            color: #10b981;
             margin-bottom: 20px;
             display: flex;
             align-items: center;
             gap: 15px;
+            animation: slideInLeft 0.6s ease-out;
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .side-icon {
-            font-size: 2rem;
-            animation: bounce 2s ease-in-out infinite;
+            font-size: 2.5rem;
+            animation: pulse 2s ease-in-out infinite;
         }
 
-        @keyframes bounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-5px); }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .side-description {
+            color: #cccccc;
+            margin-bottom: 25px;
+            font-style: italic;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
 
         .step-list {
             list-style: none;
-            space-y: 15px;
         }
 
         .step-list li {
             color: #cccccc;
-            line-height: 1.6;
-            margin-bottom: 15px;
-            padding-left: 25px;
+            line-height: 1.7;
+            margin-bottom: 20px;
+            padding-left: 30px;
             position: relative;
+            opacity: 0;
+            animation: slideInList 0.6s ease-out forwards;
+        }
+
+        .step-list li:nth-child(1) { animation-delay: 0.5s; }
+        .step-list li:nth-child(2) { animation-delay: 0.7s; }
+        .step-list li:nth-child(3) { animation-delay: 0.9s; }
+
+        @keyframes slideInList {
+            from {
+                opacity: 0;
+                transform: translateX(-15px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
         }
 
         .step-list li::before {
             content: '→';
-            color: #00ff88;
+            color: #10b981;
             font-weight: bold;
+            font-size: 1.2rem;
             position: absolute;
             left: 0;
-            animation: arrow-pulse 2s ease-in-out infinite;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        @keyframes arrow-pulse {
-            0%, 100% { opacity: 0.6; }
-            50% { opacity: 1; }
+        @keyframes bounce {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(5px); }
+        }
+
+        .step-list strong {
+            color: #10b981;
+            font-weight: 600;
         }
 
         /* Features Grid */
@@ -560,15 +590,15 @@
         }
 
         .feature-card:hover {
-            border-color: #00ff88;
+            border-color: #10b981;
             transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.2);
         }
 
         .feature-icon {
             width: 60px;
             height: 60px;
-            background: #00ff88;
+            background: #10b981;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -587,7 +617,7 @@
         .feature-title {
             font-size: 1.3rem;
             font-weight: 600;
-            color: #00ff88;
+            color: #10b981;
             margin-bottom: 15px;
         }
 
@@ -611,7 +641,7 @@
         }
 
         .cta-feature {
-            color: #00ff88;
+            color: #10b981;
             font-size: 0.9rem;
             display: flex;
             align-items: center;
@@ -620,7 +650,7 @@
 
         .cta-feature::before {
             content: '✓';
-            color: #00ff88;
+            color: #10b981;
             font-weight: bold;
         }
 
@@ -631,8 +661,8 @@
             background: linear-gradient(135deg, #111111, #1a1a1a);
             padding: 40px;
             border-radius: 20px;
-            border: 2px solid #00ff88;
-            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+            border: 2px solid #10b981;
+            box-shadow: 0 20px 40px rgba(16, 185, 129, 0.1);
         }
 
         .form-group {
@@ -641,7 +671,7 @@
 
         .form-label {
             display: block;
-            color: #00ff88;
+            color: #10b981;
             font-weight: 600;
             margin-bottom: 8px;
         }
@@ -659,8 +689,8 @@
 
         .form-input:focus {
             outline: none;
-            border-color: #00ff88;
-            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
         }
 
         .form-textarea {
@@ -670,7 +700,7 @@
 
         .submit-btn {
             width: 100%;
-            background: #00ff88;
+            background: #10b981;
             color: #000;
             padding: 18px;
             border: none;
@@ -682,25 +712,49 @@
         }
 
         .submit-btn:hover {
-            background: #00cc6b;
+            background: #059669;
             transform: translateY(-2px);
-            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+            box-shadow: 0 15px 30px rgba(16, 185, 129, 0.4);
+        }
         }
 
         /* Responsive */
         @media (max-width: 768px) {
             .header {
                 padding: 15px 25px;
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+            .nav-links {
+                gap: 20px;
             }
             
             .hero {
                 flex-direction: column;
                 text-align: center;
                 padding: 0 25px;
+                margin-top: 120px;
+            }
+
+            .hero-content {
+                max-width: 100%;
             }
             
             .hero-title {
                 font-size: 2.5rem;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn-primary, .btn-secondary {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
             }
             
             .how-it-works {
@@ -715,6 +769,57 @@
             .campaign-flow {
                 flex-direction: column;
                 text-align: center;
+                gap: 20px;
+            }
+
+            .flow-arrow {
+                transform: rotate(90deg);
+            }
+
+            .ai-brain {
+                width: 300px;
+                height: 300px;
+                margin-top: 40px;
+            }
+
+            .signup-form {
+                margin: 20px;
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                font-size: 14px;
+            }
+
+            .header {
+                padding: 10px 15px;
+            }
+
+            .logo {
+                font-size: 24px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .side-title {
+                font-size: 1.6rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .ai-brain {
+                width: 250px;
+                height: 250px;
             }
         }
     </style>
@@ -724,7 +829,7 @@
     <header class="header">
         <div class="logo-section">
             <a href="#" class="logo">Togetai</a>
-            <span class="tagline"> grow together</span>
+            <span class="tagline">grow together</span>
         </div>
         <nav class="nav-links">
             <a href="#features">Features</a>
@@ -738,7 +843,7 @@
         <div class="hero-content">
             <h1 class="hero-title">Share Your ideas.</h1>
             <h2 class="hero-title">Togetai plans, manages, and executes.</h2>
-            <p class="hero-subtitle">Creators and promoters connect instantly — campaigns, matches, and content handled by your AI agent.</p>
+            <p class="hero-subtitle">Creators and Brands connect instantly — campaigns, matches, and execution handled by your AI agent.</p>
             <div class="hero-buttons">
                 <a href="#features" class="btn-primary">Explore features →</a>
                 <a href="#cta" class="btn-secondary">Get early access</a>
@@ -796,26 +901,26 @@
         
         <div class="how-it-works">
             <!-- Promoters Side -->
-            <div class="side-card">
+            <div class="side-section">
                 <h3 class="side-title">
                     <span class="side-icon">📢</span>
                     For Promoters
                 </h3>
-                <p style="color: #cccccc; margin-bottom: 25px; font-style: italic;">Launch campaigns effortlessly and let AI handle the heavy lifting of creator discovery and management.</p>
+                <p class="side-description">Launch campaigns effortlessly and let AI handle the heavy lifting of creator discovery and management.</p>
                 <ul class="step-list">
                     <li><strong>Smart Discovery:</strong> AI analyzes creator profiles and promoter requirements to find perfect matches based on audience demographics, engagement rates, and niche alignment.</li>
-                    <li><strong>Contract & Terms:</strong> Automated contract generation with customizable terms, deliverables, timelines, and payment structures. Legal templates ensure both parties are protected.</li>
                     <li><strong>Campaign Analytics:</strong> Real-time performance tracking with detailed insights on reach, engagement, conversions, and ROI. Automated reporting for both parties.</li>
+                    <li><strong>Contract & Terms:</strong> Automated contract generation with customizable terms, deliverables, timelines, and payment structures. Legal templates ensure both parties are protected.</li>
                 </ul>
             </div>
 
             <!-- Creators Side -->
-            <div class="side-card">
+            <div class="side-section">
                 <h3 class="side-title">
                     <span class="side-icon">🎨</span>
                     For Creators
                 </h3>
-                <p style="color: #cccccc; margin-bottom: 25px; font-style: italic;">Get matched with perfect brands and receive AI-powered content guidance to maximize your creative potential.</p>
+                <p class="side-description">Get matched with perfect brands and receive AI-powered content guidance to maximize your creative potential.</p>
                 <ul class="step-list">
                     <li><strong>Intelligent Matching:</strong> Get discovered by brands that align with your content style, audience, and values. No more endless pitching or mismatched collaborations.</li>
                     <li><strong>Content Creation:</strong> Receive AI-generated briefs with trend insights, content ideas, and performance optimization suggestions tailored to your style and audience.</li>
@@ -852,75 +957,69 @@
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
                 <h3 class="feature-title">Campaign Workflow</h3>
-                <p class="feature-description">Auto-generated briefs, streamlined approvals, and tracked deliverables — faster execution.</p>
+                <p class="feature-description">Campaign ideas based on latest trends and analysis against competitors.</p>
             </div>
         </div>
     </section>
 
     <!-- CTA Section -->
     <section class="section cta-section" id="cta">
-        <h2 class="section-title">Be first to try Togetai</h2>
-        <p class="section-subtitle">Share your details and drop a prompt you'd give your AI agent. We'll invite you as we roll out.</p>
+        <h2 class="section-title">Be the first to try Togetai</h2>
+        <p class="section-subtitle">Provide your details along with a prompt you'd like your AI agent to work on, and be among the first to try it out.</p>
         
-        <div class="cta-features">
-            <div class="cta-feature">No spam — just a single invite</div>
-            <div class="cta-feature">Creators and promoters welcome</div>
-            <div class="cta-feature">Priority access for early feedback</div>
-        </div>
+        <form class="signup-form" style="margin-top: 50px;">
+            <div class="form-group">
+                <label for="role" class="form-label">I am a *</label>
+                <select id="role" name="role" class="form-input" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="creator">Creator</option>
+                    <option value="promoter">Promoter</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
 
-        <form class="signup-form" style="margin-top: 50px;" method="post" action="/submit-signup">
-  <div class="form-group">
-    <label for="role" class="form-label">I am a *</label>
-    <select id="role" name="role" class="form-input" required>
-      <option value="" disabled selected>Select one</option>
-      <option value="creator">Creator</option>
-      <option value="promoter">Promoter</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
+            <div class="form-group">
+                <label for="fullName" class="form-label">Name *</label>
+                <input id="fullName" name="name" type="text" class="form-input" placeholder="Your full name" required>
+            </div>
 
-  <div class="form-group">
-    <label for="fullName" class="form-label">Name *</label>
-    <input id="fullName" name="name" type="text" class="form-input" placeholder="Your full name" required>
-  </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email *</label>
+                <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required>
+            </div>
 
-  <div class="form-group">
-    <label for="email" class="form-label">Email *</label>
-    <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required>
-  </div>
+            <div class="form-group">
+                <label for="instagram" class="form-label">Instagram Username *</label>
+                <input id="instagram" name="instagram" type="text" class="form-input" placeholder="@yourhandle" required>
+            </div>
 
-  <div class="form-group">
-    <label for="instagram" class="form-label">Instagram Username *</label>
-    <input id="instagram" name="instagram" type="text" class="form-input" placeholder="@yourhandle" required>
-  </div>
+            <div class="form-group">
+                <label for="lastCampaign" class="form-label">Tell us about the last campaign or collaboration you worked on *</label>
+                <textarea id="lastCampaign" name="last_campaign" class="form-input form-textarea" placeholder="Briefly describe the campaign and how you found the brand/creator" rows="5" required></textarea>
+            </div>
 
-  <div class="form-group">
-    <label for="lastCampaign" class="form-label">Tell us about the last campaign or collaboration you worked on *</label>
-    <textarea id="lastCampaign" name="last_campaign" class="form-input form-textarea" placeholder="Briefly describe the campaign and how you found the brand/creator" rows="5" required></textarea>
-  </div>
+            <div class="form-group">
+                <label for="worstPart" class="form-label">What's the worst part of that whole process? *</label>
+                <textarea id="worstPart" name="worst_part" class="form-input form-textarea" placeholder="What was the hardest/frustrating step? Have you used any tools/services?" rows="4" required></textarea>
+            </div>
 
-  <div class="form-group">
-    <label for="worstPart" class="form-label">What's the worst part of that whole process? *</label>
-    <textarea id="worstPart" name="worst_part" class="form-input form-textarea" placeholder="What was the hardest/frustrating step? Have you used any tools/services?" rows="4" required></textarea>
-  </div>
+            <div class="form-group">
+               <!-- <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
+                <select id="platformHelp" name="platform_help" class="form-input" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">Maybe / Unsure</option>
+                </select> -->
+            </div>
 
-  <div class="form-group">
-    <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
-    <select id="platformHelp" name="platform_help" class="form-input" required>
-      <option value="" disabled selected>Choose one</option>
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
-      <option value="maybe">Maybe / Unsure</option>
-    </select>
-  </div>
+            <div class="form-group">
+                <label for="oneThing" class="form-label">What's one thing that would make this a lot more useful for you? *</label>
+                <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
+            </div>
 
-  <div class="form-group">
-    <label for="oneThing" class="form-label">What’s one thing that would make this a lot more useful for you? *</label>
-    <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
-  </div>
-
-  <button type="submit" class="submit-btn">Request early access</button>
-</form>
+            <button type="submit" class="submit-btn">Request early access</button>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -929,7 +1028,7 @@
             <!-- Company Info -->
             <div>
                 <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
-                    <h3 style="font-size: 32px; font-weight: bold; color: #00ff88; margin-bottom: 5px;">Togetai</h3>
+                    <h3 style="font-size: 32px; font-weight: bold; color: #10b981; margin-bottom: 5px;">Togetai</h3>
                     <span style="font-size: 12px; color: #666; letter-spacing: 0.5px;">we grow together</span>
                 </div>
                 <p style="color: #cccccc; line-height: 1.6; max-width: 400px;">
@@ -942,8 +1041,6 @@
                 <h4 style="color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 20px;">Product</h4>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
                     <a href="#features" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Features</a>
-                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Pricing</a>
-                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Integrations</a>
                 </div>
             </div>
             
@@ -952,7 +1049,7 @@
                 <h4 style="color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 20px;">Company</h4>
                 <div style="display: flex; flex-direction: column; gap: 12px;">
                     <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">About</a>
-                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Careers</a>
+                   <!-- <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Careers</a> -->
                     <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Contact</a>
                 </div>
             </div>
@@ -979,7 +1076,7 @@
             });
         });
 
-        // Form submission handler with file saving
+        // Form submission handler
         document.querySelector('.signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitBtn = this.querySelector('.submit-btn');
@@ -987,10 +1084,14 @@
             
             // Get form data
             const formData = {
-                name: this.querySelector('input[placeholder="Your full name"]').value,
-                email: this.querySelector('input[placeholder="you@example.com"]').value,
-                instagram: this.querySelector('input[placeholder="@yourhandle"]').value,
-                prompt: this.querySelector('textarea').value,
+                role: this.querySelector('#role').value,
+                name: this.querySelector('#fullName').value,
+                email: this.querySelector('#email').value,
+                instagram: this.querySelector('#instagram').value,
+                last_campaign: this.querySelector('#lastCampaign').value,
+                worst_part: this.querySelector('#worstPart').value,
+                platform_help: this.querySelector('#platformHelp').value,
+                one_thing: this.querySelector('#oneThing').value,
                 timestamp: new Date().toISOString(),
                 id: Date.now() + Math.random().toString(36).substr(2, 9)
             };
@@ -999,49 +1100,31 @@
             submitBtn.disabled = true;
             
             try {
-                // Simulate saving to feedback.json file
-                // Note: In a real application, this would be handled by a backend server
-                console.log('Saving feedback data:', formData);
+                // Simulate API call
+                await new Promise(resolve => setTimeout(resolve, 1500));
                 
-                // Store in localStorage as a fallback (since we can't actually write files from browser)
-                const existingFeedback = JSON.parse(localStorage.getItem('togetai_feedback') || '[]');
-                existingFeedback.push(formData);
-                localStorage.setItem('togetai_feedback', JSON.stringify(existingFeedback, null, 2));
+                // Store in memory for demonstration
+                console.log('Form data submitted:', formData);
                 
-                // Download as JSON file for demonstration
-                const dataStr = JSON.stringify(existingFeedback, null, 2);
-                const dataBlob = new Blob([dataStr], {type: 'application/json'});
-                const url = URL.createObjectURL(dataBlob);
-                const downloadLink = document.createElement('a');
-                downloadLink.href = url;
-                downloadLink.download = 'feedback.json';
-                downloadLink.style.display = 'none';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-                URL.revokeObjectURL(url);
+                submitBtn.textContent = 'Thank you! Request submitted successfully!';
+                submitBtn.style.background = '#059669';
                 
                 setTimeout(() => {
-                    submitBtn.textContent = 'Thank you! Data saved successfully!';
-                    submitBtn.style.background = '#00cc6b';
-                    
-                    setTimeout(() => {
-                        submitBtn.textContent = originalText;
-                        submitBtn.disabled = false;
-                        submitBtn.style.background = '#00ff88';
-                        this.reset();
-                    }, 3000);
-                }, 1500);
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '#10b981';
+                    this.reset();
+                }, 3000);
                 
             } catch (error) {
-                console.error('Error saving feedback:', error);
-                submitBtn.textContent = 'Error saving data. Please try again.';
+                console.error('Error submitting form:', error);
+                submitBtn.textContent = 'Error submitting. Please try again.';
                 submitBtn.style.background = '#ff4444';
                 
                 setTimeout(() => {
                     submitBtn.textContent = originalText;
                     submitBtn.disabled = false;
-                    submitBtn.style.background = '#00ff88';
+                    submitBtn.style.background = '#10b981';
                 }, 3000);
             }
         });
@@ -1062,22 +1145,24 @@
         }, observerOptions);
 
         // Apply animation to cards
-        document.querySelectorAll('.feature-card, .side-card').forEach(card => {
+        document.querySelectorAll('.feature-card, .side-section').forEach(card => {
             card.style.opacity = '0';
             card.style.transform = 'translateY(50px)';
             card.style.transition = 'all 0.6s ease';
             observer.observe(card);
         });
 
-        // Dynamic neural network connections - Enhanced
+        // Dynamic neural network connections
         function createConnections() {
             const brain = document.querySelector('.neural-network');
+            if (!brain) return;
+            
             const nodes = brain.querySelectorAll('.node');
             
             // Remove existing connections
             brain.querySelectorAll('.connection').forEach(conn => conn.remove());
             
-            // Create more connections between nodes
+            // Create connections between nodes
             const connectionPairs = [
                 [0, 1], [1, 2], [2, 3], [3, 4], [4, 0],
                 [0, 2], [1, 3], [2, 4], [0, 3], [1, 4],
@@ -1124,21 +1209,42 @@
         // Add hover effects to footer links
         document.querySelectorAll('footer a').forEach(link => {
             link.addEventListener('mouseenter', function() {
-                this.style.color = '#00ff88';
+                this.style.color = '#10b981';
             });
             link.addEventListener('mouseleave', function() {
                 this.style.color = '#888';
             });
         });
 
-        // Add responsive behavior for mobile
-        @media (max-width: 768px) {
-            footer > div:first-child {
-                grid-template-columns: 1fr !important
-                gap: 40px !important;
-                text-align: center;
+        // Mobile menu toggle (if needed in future)
+        const header = document.querySelector('.header');
+        let lastScrollY = window.scrollY;
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > lastScrollY && window.scrollY > 100) {
+                header.style.transform = 'translateY(-100%)';
+            } else {
+                header.style.transform = 'translateY(0)';
+            }
+            lastScrollY = window.scrollY;
+        });
+
+        // Add responsive footer styles
+        const mediaQuery = window.matchMedia('(max-width: 768px)');
+        function handleTabletChange(e) {
+            const footerGrid = document.querySelector('footer > div:first-child');
+            if (e.matches) {
+                footerGrid.style.gridTemplateColumns = '1fr';
+                footerGrid.style.gap = '40px';
+                footerGrid.style.textAlign = 'center';
+            } else {
+                footerGrid.style.gridTemplateColumns = '2fr 1fr 1fr';
+                footerGrid.style.gap = '60px';
+                footerGrid.style.textAlign = 'left';
             }
         }
+        mediaQuery.addListener(handleTabletChange);
+        handleTabletChange(mediaQuery);
     </script>
 </body>
 </html>
