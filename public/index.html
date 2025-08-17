@@ -868,29 +868,59 @@
             <div class="cta-feature">Priority access for early feedback</div>
         </div>
 
-        <form class="signup-form" style="margin-top: 50px;">
-            <div class="form-group">
-                <label class="form-label">Name *</label>
-                <input type="text" class="form-input" placeholder="Your full name" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Email *</label>
-                <input type="email" class="form-input" placeholder="you@example.com" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">Instagram Username *</label>
-                <input type="text" class="form-input" placeholder="@yourhandle" required>
-            </div>
-            
-            <div class="form-group">
-                <label class="form-label">What prompt would you give Togetai? *</label>
-                <textarea class="form-input form-textarea" placeholder="e.g., Find 10 UGC creators for my new eco skincare launch" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Request early access</button>
-        </form>
+        <form class="signup-form" style="margin-top: 50px;" method="post" action="/submit-signup">
+  <div class="form-group">
+    <label for="role" class="form-label">I am a *</label>
+    <select id="role" name="role" class="form-input" required>
+      <option value="" disabled selected>Select one</option>
+      <option value="creator">Creator</option>
+      <option value="promoter">Promoter</option>
+      <option value="other">Other</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="fullName" class="form-label">Name *</label>
+    <input id="fullName" name="name" type="text" class="form-input" placeholder="Your full name" required>
+  </div>
+
+  <div class="form-group">
+    <label for="email" class="form-label">Email *</label>
+    <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required>
+  </div>
+
+  <div class="form-group">
+    <label for="instagram" class="form-label">Instagram Username *</label>
+    <input id="instagram" name="instagram" type="text" class="form-input" placeholder="@yourhandle" required>
+  </div>
+
+  <div class="form-group">
+    <label for="lastCampaign" class="form-label">Tell us about the last campaign or collaboration you worked on *</label>
+    <textarea id="lastCampaign" name="last_campaign" class="form-input form-textarea" placeholder="Briefly describe the campaign and how you found the brand/creator" rows="5" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="worstPart" class="form-label">What's the worst part of that whole process? *</label>
+    <textarea id="worstPart" name="worst_part" class="form-input form-textarea" placeholder="What was the hardest/frustrating step? Have you used any tools/services?" rows="4" required></textarea>
+  </div>
+
+  <div class="form-group">
+    <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
+    <select id="platformHelp" name="platform_help" class="form-input" required>
+      <option value="" disabled selected>Choose one</option>
+      <option value="yes">Yes</option>
+      <option value="no">No</option>
+      <option value="maybe">Maybe / Unsure</option>
+    </select>
+  </div>
+
+  <div class="form-group">
+    <label for="oneThing" class="form-label">What’s one thing that would make this a lot more useful for you? *</label>
+    <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
+  </div>
+
+  <button type="submit" class="submit-btn">Request early access</button>
+</form>
     </section>
 
     <!-- Footer -->
