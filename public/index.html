@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Togetai - Grow Together</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #000000;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow-x: hidden;
+        }
+
+        @media (max-width:768px){
+            .header {
+                padding: 15px 20px;
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+        }
+
+
+        @media (max-width: 480px){
+            body{
+                font-size: 14px;
+            }
+            .header{
+                padding: 10px 15px;
+            }
+
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #1a1a1a;
+        }
+
+        .logo-section {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #00ff88;
+            text-decoration: none;
+        }
+
+        .tagline {
+            font-size: 10px;
+            color: #888;
+            margin-top: 2px;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #00ff88;
+        }
+
+        .cta-button {
+            background: #00ff88;
+            color: #000;
+            padding: 12px 24px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background: #00cc6b;
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(0, 255, 136, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 0 50px;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .hero-content {
+            flex: 1;
+            max-width: 600px;
+            z-index: 10;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            background: linear-gradient(135deg, #ffffff, #00ff88);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: titleGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% { filter: brightness(1); }
+            100% { filter: brightness(1.2); }
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            color: #cccccc;
+            margin-bottom: 40px;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .btn-primary {
+            background: #00ff88;
+            color: #000;
+            padding: 15px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background: #00cc6b;
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        .btn-secondary {
+            color: #00ff88;
+            padding: 15px 30px;
+            border: 2px solid #00ff88;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: #00ff88;
+            color: #000;
+        }
+
+        /* Campaign Flow */
+        .campaign-flow {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            margin-top: 40px;
+            padding: 20px;
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            background: rgba(0, 255, 136, 0.1);
+            animation: pulseGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes pulseGlow {
+            0% { box-shadow: 0 0 10px rgba(0, 255, 136, 0.3); }
+            100% { box-shadow: 0 0 25px rgba(0, 255, 136, 0.6); }
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #00ff88;
+            font-weight: 600;
+        }
+
+        .flow-arrow {
+            font-size: 24px;
+            color: #00ff88;
+            animation: slideRight 1.5s ease-in-out infinite;
+        }
+
+        @keyframes slideRight {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(10px); }
+        }
+
+        /* AI Animation - Enhanced */
+        .ai-brain {
+            width: 400px;
+            height: 400px;
+            position: relative;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotateZ(0deg); }
+            33% { transform: translateY(-15px) rotateZ(2deg); }
+            66% { transform: translateY(-25px) rotateZ(-1deg); }
+        }
+
+        .brain-core {
+            width: 180px;
+            height: 180px;
+            background: linear-gradient(135deg, #00ff88, #00cc6b, #009955);
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            box-shadow: 
+                0 0 60px rgba(0, 255, 136, 0.8),
+                inset 0 0 30px rgba(255, 255, 255, 0.1);
+            animation: corePulse 3s ease-in-out infinite;
+            overflow: hidden;
+        }
+
+        .brain-core::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: coreShine 4s linear infinite;
+        }
+
+        @keyframes coreShine {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        @keyframes corePulse {
+            0%, 100% { 
+                transform: translate(-50%, -50%) scale(1);
+                box-shadow: 0 0 60px rgba(0, 255, 136, 0.8), inset 0 0 30px rgba(255, 255, 255, 0.1);
+            }
+            50% { 
+                transform: translate(-50%, -50%) scale(1.15);
+                box-shadow: 0 0 100px rgba(0, 255, 136, 1), inset 0 0 50px rgba(255, 255, 255, 0.2);
+            }
+        }
+
+        .neural-network {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .node {
+            width: 24px;
+            height: 24px;
+            background: radial-gradient(circle, #00ff88, #00cc6b);
+            border-radius: 50%;
+            position: absolute;
+            box-shadow: 
+                0 0 25px rgba(0, 255, 136, 1),
+                inset 0 0 10px rgba(255, 255, 255, 0.3);
+            animation: nodeGlow 4s ease-in-out infinite;
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .node::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 8px;
+            height: 8px;
+            background: #ffffff;
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            animation: innerGlow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes innerGlow {
+            0% { opacity: 0.5; transform: translate(-50%, -50%) scale(0.5); }
+            100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+        }
+
+        @keyframes nodeGlow {
+            0%, 100% { 
+                opacity: 0.7; 
+                transform: scale(1);
+                box-shadow: 0 0 25px rgba(0, 255, 136, 1), inset 0 0 10px rgba(255, 255, 255, 0.3);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scale(1.2);
+                box-shadow: 0 0 40px rgba(0, 255, 136, 1.5), inset 0 0 15px rgba(255, 255, 255, 0.5);
+            }
+        }
+
+        .node:nth-child(2) { top: 5%; left: 25%; animation-delay: 0.5s; }
+        .node:nth-child(3) { top: 15%; right: 15%; animation-delay: 1s; }
+        .node:nth-child(4) { bottom: 15%; left: 15%; animation-delay: 1.5s; }
+        .node:nth-child(5) { bottom: 5%; right: 25%; animation-delay: 2s; }
+        .node:nth-child(6) { top: 45%; left: 2%; animation-delay: 2.5s; }
+        .node:nth-child(7) { top: 45%; right: 2%; animation-delay: 3s; }
+        .node:nth-child(8) { top: 25%; left: 8%; animation-delay: 0.8s; }
+        .node:nth-child(9) { top: 25%; right: 8%; animation-delay: 1.8s; }
+
+        .connection {
+            position: absolute;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #00ff88, #ffffff, #00ff88, transparent);
+            animation: dataFlow 3s ease-in-out infinite;
+            border-radius: 2px;
+            opacity: 0.8;
+        }
+
+        @keyframes dataFlow {
+            0%, 100% { 
+                opacity: 0.3; 
+                transform: scaleX(0.5);
+            }
+            50% { 
+                opacity: 1; 
+                transform: scaleX(1);
+                box-shadow: 0 0 10px rgba(0, 255, 136, 0.8);
+            }
+        }
+
+        /* Data Particles */
+        .data-particles {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .particle {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            background: #00ff88;
+            border-radius: 50%;
+            animation: particleFloat 8s linear infinite;
+            box-shadow: 0 0 6px rgba(0, 255, 136, 0.8);
+        }
+
+        @keyframes particleFloat {
+            0% {
+                transform: translateY(400px) translateX(0px) rotate(0deg);
+                opacity: 0;
+            }
+            10% {
+                opacity: 1;
+            }
+            90% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100px) translateX(200px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .particle:nth-child(1) { left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { left: 20%; animation-delay: 1s; }
+        .particle:nth-child(3) { left: 30%; animation-delay: 2s; }
+        .particle:nth-child(4) { left: 40%; animation-delay: 3s; }
+        .particle:nth-child(5) { left: 50%; animation-delay: 4s; }
+        .particle:nth-child(6) { left: 60%; animation-delay: 5s; }
+        .particle:nth-child(7) { left: 70%; animation-delay: 6s; }
+        .particle:nth-child(8) { left: 80%; animation-delay: 7s; }
+
+        /* Orbit Rings */
+        .orbit-ring {
+            position: absolute;
+            border: 1px solid rgba(0, 255, 136, 0.3);
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            animation: orbitRotate 20s linear infinite;
+        }
+
+        .orbit-ring:nth-child(1) {
+            width: 250px;
+            height: 250px;
+            margin: -125px 0 0 -125px;
+            animation-duration: 15s;
+        }
+
+        .orbit-ring:nth-child(2) {
+            width: 320px;
+            height: 320px;
+            margin: -160px 0 0 -160px;
+            animation-duration: 25s;
+            animation-direction: reverse;
+        }
+
+        @keyframes orbitRotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Section Styling */
+        .section {
+            padding: 100px 50px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 20px;
+            color: #00ff88;
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #cccccc;
+            text-align: center;
+            margin-bottom: 60px;
+            line-height: 1.6;
+        }
+
+        /* How it Works - Split Layout */
+        .how-it-works {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .side-card {
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            border: 2px solid #00ff88;
+            border-radius: 20px;
+            padding: 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .side-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.3);
+        }
+
+        .side-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, #00ff88, #00cc6b);
+            animation: shimmer 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { opacity: 0.5; }
+            50% { opacity: 1; }
+        }
+
+        .side-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #00ff88;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .side-icon {
+            font-size: 2rem;
+            animation: bounce 2s ease-in-out infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+
+        .step-list {
+            list-style: none;
+            space-y: 15px;
+        }
+
+        .step-list li {
+            color: #cccccc;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .step-list li::before {
+            content: '→';
+            color: #00ff88;
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+            animation: arrow-pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes arrow-pulse {
+            0%, 100% { opacity: 0.6; }
+            50% { opacity: 1; }
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+
+        .feature-card {
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            border: 1px solid #333;
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card:hover {
+            border-color: #00ff88;
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.2);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            background: #00ff88;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 24px;
+            color: #000;
+            animation: iconSpin 10s linear infinite;
+        }
+
+        @keyframes iconSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #00ff88;
+            margin-bottom: 15px;
+        }
+
+        .feature-description {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #111111, #000000);
+            text-align: center;
+        }
+
+        .cta-features {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .cta-feature {
+            color: #00ff88;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .cta-feature::before {
+            content: '✓';
+            color: #00ff88;
+            font-weight: bold;
+        }
+
+        /* Form Styling */
+        .signup-form {
+            max-width: 500px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, #111111, #1a1a1a);
+            padding: 40px;
+            border-radius: 20px;
+            border: 2px solid #00ff88;
+            box-shadow: 0 20px 40px rgba(0, 255, 136, 0.1);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            color: #00ff88;
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 15px;
+            background: #000;
+            border: 2px solid #333;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 16px;
+            transition: all 0.3s ease;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0, 255, 136, 0.3);
+        }
+
+        .form-textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #00ff88;
+            color: #000;
+            padding: 18px;
+            border: none;
+            border-radius: 30px;
+            font-size: 18px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background: #00cc6b;
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header {
+                padding: 15px 25px;
+            }
+            
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                padding: 0 25px;
+            }
+            
+            .hero-title {
+                font-size: 2.5rem;
+            }
+            
+            .how-it-works {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .section {
+                padding: 60px 25px;
+            }
+            
+            .campaign-flow {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="logo-section">
+            <a href="#" class="logo">Togetai</a>
+            <span class="tagline"> grow together</span>
+        </div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#how-it-works">How it works</a>
+            <a href="#cta" class="cta-button">Get early access</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title">Share Your ideas.</h1>
+            <h2 class="hero-title">Togetai plans, manages, and executes.</h2>
+            <p class="hero-subtitle">Creators and promoters connect instantly — campaigns, matches, and content handled by your AI agent.</p>
+            <div class="hero-buttons">
+                <a href="#features" class="btn-primary">Explore features →</a>
+                <a href="#cta" class="btn-secondary">Get early access</a>
+            </div>
+            
+            <!-- Campaign Flow Visualization -->
+            <div class="campaign-flow">
+                <div class="flow-step">
+                    <span>📋</span>
+                    <span>Brand Posts Campaign</span>
+                </div>
+                <div class="flow-arrow">→</div>
+                <div class="flow-step">
+                    <span>👥</span>
+                    <span>AI Finds Perfect Creators</span>
+                </div>
+            </div>
+        </div>
+        
+        <!-- AI Animation -->
+        <div class="hero-animation">
+            <div class="ai-brain">
+                <div class="orbit-ring"></div>
+                <div class="orbit-ring"></div>
+                <div class="brain-core"></div>
+                <div class="neural-network">
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                    <div class="node"></div>
+                </div>
+                <div class="data-particles">
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                    <div class="particle"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="section" id="how-it-works">
+        <h2 class="section-title">How Promoters & Creators Connect</h2>
+        <p class="section-subtitle">From discovery to campaign completion — streamlined collaboration in four simple steps</p>
+        
+        <div class="how-it-works">
+            <!-- Promoters Side -->
+            <div class="side-card">
+                <h3 class="side-title">
+                    <span class="side-icon">📢</span>
+                    For Promoters
+                </h3>
+                <p style="color: #cccccc; margin-bottom: 25px; font-style: italic;">Launch campaigns effortlessly and let AI handle the heavy lifting of creator discovery and management.</p>
+                <ul class="step-list">
+                    <li><strong>Smart Discovery:</strong> AI analyzes creator profiles and promoter requirements to find perfect matches based on audience demographics, engagement rates, and niche alignment.</li>
+                    <li><strong>Contract & Terms:</strong> Automated contract generation with customizable terms, deliverables, timelines, and payment structures. Legal templates ensure both parties are protected.</li>
+                    <li><strong>Campaign Analytics:</strong> Real-time performance tracking with detailed insights on reach, engagement, conversions, and ROI. Automated reporting for both parties.</li>
+                </ul>
+            </div>
+
+            <!-- Creators Side -->
+            <div class="side-card">
+                <h3 class="side-title">
+                    <span class="side-icon">🎨</span>
+                    For Creators
+                </h3>
+                <p style="color: #cccccc; margin-bottom: 25px; font-style: italic;">Get matched with perfect brands and receive AI-powered content guidance to maximize your creative potential.</p>
+                <ul class="step-list">
+                    <li><strong>Intelligent Matching:</strong> Get discovered by brands that align with your content style, audience, and values. No more endless pitching or mismatched collaborations.</li>
+                    <li><strong>Content Creation:</strong> Receive AI-generated briefs with trend insights, content ideas, and performance optimization suggestions tailored to your style and audience.</li>
+                    <li><strong>Seamless Workflow:</strong> Auto-generated briefs, streamlined approvals, and tracked deliverables — faster execution with built-in revision and approval systems.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="section" id="features">
+        <h2 class="section-title">What you get</h2>
+        <p class="section-subtitle">Faster discovery, smarter ideas, and effortless execution.</p>
+        
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">🎯</div>
+                <h3 class="feature-title">Instant Creator Matching</h3>
+                <p class="feature-description">AI scans thousands of profiles to match promoters with creators by niche, audience fit, and performance.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">💡</div>
+                <h3 class="feature-title">Ideas on Demand</h3>
+                <p class="feature-description">Creators get trend-aware content ideas tailored to their style, content, and audience.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📊</div>
+                <h3 class="feature-title">Performance Insights</h3>
+                <p class="feature-description">Understand what works. Get clear guidance to improve posts, reels, and stories.</p>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <h3 class="feature-title">Campaign Workflow</h3>
+                <p class="feature-description">Auto-generated briefs, streamlined approvals, and tracked deliverables — faster execution.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section" id="cta">
+        <h2 class="section-title">Be first to try Togetai</h2>
+        <p class="section-subtitle">Share your details and drop a prompt you'd give your AI agent. We'll invite you as we roll out.</p>
+        
+        <div class="cta-features">
+            <div class="cta-feature">No spam — just a single invite</div>
+            <div class="cta-feature">Creators and promoters welcome</div>
+            <div class="cta-feature">Priority access for early feedback</div>
+        </div>
+
+        <form class="signup-form" style="margin-top: 50px;">
+            <div class="form-group">
+                <label class="form-label">Name *</label>
+                <input type="text" class="form-input" placeholder="Your full name" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Email *</label>
+                <input type="email" class="form-input" placeholder="you@example.com" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">Instagram Username *</label>
+                <input type="text" class="form-input" placeholder="@yourhandle" required>
+            </div>
+            
+            <div class="form-group">
+                <label class="form-label">What prompt would you give Togetai? *</label>
+                <textarea class="form-input form-textarea" placeholder="e.g., Find 10 UGC creators for my new eco skincare launch" required></textarea>
+            </div>
+            
+            <button type="submit" class="submit-btn">Request early access</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer style="background: #000000; border-top: 1px solid #1a1a1a; padding: 60px 50px 30px;">
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 60px; margin-bottom: 40px;">
+            <!-- Company Info -->
+            <div>
+                <div style="display: flex; flex-direction: column; margin-bottom: 20px;">
+                    <h3 style="font-size: 32px; font-weight: bold; color: #00ff88; margin-bottom: 5px;">Togetai</h3>
+                    <span style="font-size: 12px; color: #666; letter-spacing: 0.5px;">we grow together</span>
+                </div>
+                <p style="color: #cccccc; line-height: 1.6; max-width: 400px;">
+                    AI-powered platform connecting creators and promoters for seamless campaign collaborations.
+                </p>
+            </div>
+            
+            <!-- Product Links -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 20px;">Product</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="#features" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Features</a>
+                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Pricing</a>
+                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Integrations</a>
+                </div>
+            </div>
+            
+            <!-- Company Links -->
+            <div>
+                <h4 style="color: #ffffff; font-size: 18px; font-weight: 600; margin-bottom: 20px;">Company</h4>
+                <div style="display: flex; flex-direction: column; gap: 12px;">
+                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">About</a>
+                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Careers</a>
+                    <a href="#" style="color: #888; text-decoration: none; transition: color 0.3s ease;">Contact</a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Bottom -->
+        <div style="border-top: 1px solid #1a1a1a; padding-top: 20px; text-align: center;">
+            <p style="color: #666; font-size: 14px;">© 2025 Togetai. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Form submission handler with file saving
+        document.querySelector('.signup-form').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const submitBtn = this.querySelector('.submit-btn');
+            const originalText = submitBtn.textContent;
+            
+            // Get form data
+            const formData = {
+                name: this.querySelector('input[placeholder="Your full name"]').value,
+                email: this.querySelector('input[placeholder="you@example.com"]').value,
+                instagram: this.querySelector('input[placeholder="@yourhandle"]').value,
+                prompt: this.querySelector('textarea').value,
+                timestamp: new Date().toISOString(),
+                id: Date.now() + Math.random().toString(36).substr(2, 9)
+            };
+            
+            submitBtn.textContent = 'Submitting...';
+            submitBtn.disabled = true;
+            
+            try {
+                // Simulate saving to feedback.json file
+                // Note: In a real application, this would be handled by a backend server
+                console.log('Saving feedback data:', formData);
+                
+                // Store in localStorage as a fallback (since we can't actually write files from browser)
+                const existingFeedback = JSON.parse(localStorage.getItem('togetai_feedback') || '[]');
+                existingFeedback.push(formData);
+                localStorage.setItem('togetai_feedback', JSON.stringify(existingFeedback, null, 2));
+                
+                // Download as JSON file for demonstration
+                const dataStr = JSON.stringify(existingFeedback, null, 2);
+                const dataBlob = new Blob([dataStr], {type: 'application/json'});
+                const url = URL.createObjectURL(dataBlob);
+                const downloadLink = document.createElement('a');
+                downloadLink.href = url;
+                downloadLink.download = 'feedback.json';
+                downloadLink.style.display = 'none';
+                document.body.appendChild(downloadLink);
+                downloadLink.click();
+                document.body.removeChild(downloadLink);
+                URL.revokeObjectURL(url);
+                
+                setTimeout(() => {
+                    submitBtn.textContent = 'Thank you! Data saved successfully!';
+                    submitBtn.style.background = '#00cc6b';
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '#00ff88';
+                        this.reset();
+                    }, 3000);
+                }, 1500);
+                
+            } catch (error) {
+                console.error('Error saving feedback:', error);
+                submitBtn.textContent = 'Error saving data. Please try again.';
+                submitBtn.style.background = '#ff4444';
+                
+                setTimeout(() => {
+                    submitBtn.textContent = originalText;
+                    submitBtn.disabled = false;
+                    submitBtn.style.background = '#00ff88';
+                }, 3000);
+            }
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Apply animation to cards
+        document.querySelectorAll('.feature-card, .side-card').forEach(card => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(50px)';
+            card.style.transition = 'all 0.6s ease';
+            observer.observe(card);
+        });
+
+        // Dynamic neural network connections - Enhanced
+        function createConnections() {
+            const brain = document.querySelector('.neural-network');
+            const nodes = brain.querySelectorAll('.node');
+            
+            // Remove existing connections
+            brain.querySelectorAll('.connection').forEach(conn => conn.remove());
+            
+            // Create more connections between nodes
+            const connectionPairs = [
+                [0, 1], [1, 2], [2, 3], [3, 4], [4, 0],
+                [0, 2], [1, 3], [2, 4], [0, 3], [1, 4],
+                [5, 6], [5, 7], [6, 8], [7, 8]
+            ];
+            
+            connectionPairs.forEach(([i, j], index) => {
+                if (nodes[i] && nodes[j]) {
+                    setTimeout(() => {
+                        const connection = document.createElement('div');
+                        connection.className = 'connection';
+                        
+                        const rect1 = nodes[i].getBoundingClientRect();
+                        const rect2 = nodes[j].getBoundingClientRect();
+                        const brainRect = brain.getBoundingClientRect();
+                        
+                        const x1 = rect1.left - brainRect.left + 12;
+                        const y1 = rect1.top - brainRect.top + 12;
+                        const x2 = rect2.left - brainRect.left + 12;
+                        const y2 = rect2.top - brainRect.top + 12;
+                        
+                        const length = Math.sqrt(Math.pow(x2 - x1, 2) + Math.pow(y2 - y1, 2));
+                        const angle = Math.atan2(y2 - y1, x2 - x1) * 180 / Math.PI;
+                        
+                        connection.style.width = length + 'px';
+                        connection.style.left = x1 + 'px';
+                        connection.style.top = y1 + 'px';
+                        connection.style.transform = `rotate(${angle}deg)`;
+                        connection.style.transformOrigin = '0 50%';
+                        connection.style.animationDelay = (index * 0.2) + 's';
+                        
+                        brain.appendChild(connection);
+                    }, index * 100);
+                }
+            });
+        }
+
+        // Create initial connections and refresh them periodically
+        setTimeout(() => {
+            createConnections();
+            setInterval(createConnections, 4000);
+        }, 1000);
+
+        // Add hover effects to footer links
+        document.querySelectorAll('footer a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.color = '#00ff88';
+            });
+            link.addEventListener('mouseleave', function() {
+                this.style.color = '#888';
+            });
+        });
+
+        // Add responsive behavior for mobile
+        @media (max-width: 768px) {
+            footer > div:first-child {
+                grid-template-columns: 1fr !important
+                gap: 40px !important;
+                text-align: center;
+            }
+        }
+    </script>
+</body>
+</html>

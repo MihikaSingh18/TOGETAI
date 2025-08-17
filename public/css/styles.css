@@ -1,0 +1,268 @@
+/* ================================
+   TogetAI Global Styles
+   ================================ */
+
+/* Fonts & Base Setup */
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&family=Rajdhani:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Rajdhani', sans-serif;
+  background: linear-gradient(135deg, #050d1a, #0c1f38, #09111e);
+  color: #e6f1ff;
+  line-height: 1.6;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Headings */
+h1, h2, h3 {
+  font-family: 'Orbitron', sans-serif;
+  color: #00e5ff;
+  text-shadow: 0 0 10px rgba(0, 229, 255, 0.8);
+}
+
+/* Links */
+a {
+  color: #00e5ff;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+a:hover {
+  color: #29ffc6;
+}
+
+/* ================================
+   Navbar
+   ================================ */
+header {
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #29ffc6;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 1.5rem;
+}
+
+nav ul li a {
+  font-weight: 500;
+  font-size: 1.1rem;
+}
+
+/* ================================
+   Hero Section (Landing Page)
+   ================================ */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  animation: glowText 3s infinite alternate;
+}
+
+.hero p {
+  font-size: 1.3rem;
+  max-width: 700px;
+  margin: 0 auto 2rem auto;
+}
+
+.hero .btn {
+  padding: 0.8rem 2rem;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  background: linear-gradient(90deg, #00e5ff, #29ffc6);
+  color: #000;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+.hero .btn:hover {
+  transform: scale(1.1);
+}
+
+/* Glow animation for text */
+@keyframes glowText {
+  0% { text-shadow: 0 0 10px #00e5ff; }
+  100% { text-shadow: 0 0 20px #29ffc6; }
+}
+
+/* ================================
+   Sections (How it Works, Benefits, etc.)
+   ================================ */
+section {
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+section h2 {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+.section-content {
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Cards for Benefits */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 2rem;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 0 20px rgba(0, 229, 255, 0.6);
+}
+
+.card h3 {
+  margin-bottom: 1rem;
+  color: #29ffc6;
+}
+
+/* ================================
+   Feedback Form
+   ================================ */
+form {
+  max-width: 600px;
+  margin: auto;
+  background: rgba(255, 255, 255, 0.05);
+  padding: 2rem;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(0, 229, 255, 0.2);
+}
+
+form label {
+  display: block;
+  text-align: left;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+form input,
+form select,
+form textarea {
+  width: 100%;
+  padding: 0.8rem;
+  margin-bottom: 1.5rem;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+  background: rgba(255, 255, 255, 0.1);
+  color: #e6f1ff;
+}
+
+form button {
+  width: 100%;
+  padding: 0.8rem;
+  background: linear-gradient(90deg, #00e5ff, #29ffc6);
+  color: #000;
+  border: none;
+  border-radius: 25px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+/* ================================
+   AI Agent Modal
+   ================================ */
+.agent-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(5, 10, 20, 0.95);
+  backdrop-filter: blur(10px);
+  justify-content: center;
+  align-items: center;
+  z-index: 2000;
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.agent-content {
+  max-width: 700px;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 20px;
+  text-align: center;
+  box-shadow: 0 0 25px rgba(0, 229, 255, 0.6);
+  animation: floatUp 0.8s ease;
+}
+
+.agent-content h2 {
+  margin-bottom: 1.5rem;
+  color: #29ffc6;
+}
+
+.agent-close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  font-size: 2rem;
+  color: #00e5ff;
+  cursor: pointer;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes floatUp {
+  from { transform: translateY(30px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+/* ================================
+   Footer
+   ================================ */
+footer {
+  background: rgba(0, 0, 0, 0.8);
+  padding: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  font-size: 0.9rem;
+  color: #aaa;
+}

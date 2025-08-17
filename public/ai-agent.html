@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>TogetAI – AI Agent</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body class="ai-agent-page">
+
+  <!-- Navigation -->
+  <header class="navbar">
+    <div class="logo">Toget<span>AI</span></div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="benefits.html">Benefits</a></li>
+        <li><a href="feedback.html">Feedback</a></li>
+        <li><a href="ai-agent.html" class="active">AI Agent</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero-section ai-hero">
+    <h1 class="headline typewriter">Meet Your AI Collaboration Agent</h1>
+    <p class="tagline">Always online, always learning, always ready to help influencers & promoters connect seamlessly.</p>
+    <button id="openAgentModal" class="btn-primary">Chat with Agent</button>
+  </section>
+
+  <!-- Floating AI Avatar -->
+  <div class="ai-avatar">
+    <div class="avatar-face">🤖</div>
+    <div class="avatar-glow"></div>
+  </div>
+
+  <!-- Modal -->
+  <div id="agentModal" class="modal">
+    <div class="modal-content">
+      <span class="close-btn" id="closeAgentModal">&times;</span>
+      <h2>AI Agent</h2>
+      <div class="chat-box" id="chatBox">
+        <p class="bot-message">👋 Hello! I am TogetAI’s virtual agent. Ask me anything about collaborations!</p>
+      </div>
+      <div class="chat-input">
+        <input type="text" id="userMessage" placeholder="Type your question..." />
+        <button id="sendMessage" class="btn-secondary">Send</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 TogetAI. Built with 💙 futuristic AI design.</p>
+  </footer>
+
+  <script src="public/js/main.js"></script>
+</body>
+</html>
