@@ -94,6 +94,13 @@
             position: relative;
         }
 
+
+        .hero-title {
+            white-space: nowrap;   /* Prevents line breaks */
+            overflow: hidden;      /* Prevents overflow issues */
+            text-overflow: ellipsis; /* Adds ... if text overflows */
+        }
+
         .hero-content {
             flex: 1;
             max-width: 600px;
