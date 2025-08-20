@@ -1,3 +1,4 @@
+// server.js - Node.js backend to handle form submissions
 const express = require('express');
 const fs = require('fs').promises;
 const path = require('path');
@@ -7,180 +8,117 @@ const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
 app.use(cors());
+app.use(express.json());
 app.use(express.static('public')); // Serve static files from public directory
 
-// Path to feedback.json
-const feedbackPath = path.join(__dirname, 'data', 'feedback.json');
+// Path to feedback.json file
+const FEEDBACK_FILE = path.join(__dirname, 'data', 'feedback.json');
 
-// Ensure data directory and feedback.json exist
-async function initializeFeedbackFile() {
+// Ensure data directory and feedback.json file exist
+async function initializeDataFile() {
     try {
-        const dataDir = path.dirname(feedbackPath);
-        await fs.mkdir(dataDir, { recursive: true });
+        const dataDir = path.join(__dirname, 'data');
         
-        // Check if feedback.json exists, if not create it
+        // Create data directory if it doesn't exist
         try {
-            await fs.access(feedbackPath);
-        } catch (error) {
-            // File doesn't exist, create it with empty array
-            await fs.writeFile(feedbackPath, JSON.stringify([], null, 2));
+            await fs.access(dataDir);
+        } catch {
+            await fs.mkdir(dataDir, { recursive: true });
+            console.log('Created data directory');
+        }
+        
+        // Create feedback.json if it doesn't exist
+        try {
+            await fs.access(FEEDBACK_FILE);
+        } catch {
+            await fs.writeFile(FEEDBACK_FILE, JSON.stringify([], null, 2));
             console.log('Created feedback.json file');
         }
     } catch (error) {
-        console.error('Error initializing feedback file:', error);
+        console.error('Error initializing data file:', error);
     }
 }
 
-// Read feedback data
-async function readFeedback() {
+// Read existing feedback data
+async function readFeedbackData() {
     try {
-        const data = await fs.readFile(feedbackPath, 'utf8');
+        const data = await fs.readFile(FEEDBACK_FILE, 'utf8');
         return JSON.parse(data);
     } catch (error) {
-        console.error('Error reading feedback:', error);
+        console.error('Error reading feedback data:', error);
         return [];
     }
 }
 
 // Write feedback data
-async function writeFeedback(data) {
+async function writeFeedbackData(data) {
     try {
-        await fs.writeFile(feedbackPath, JSON.stringify(data, null, 2));
+        await fs.writeFile(FEEDBACK_FILE, JSON.stringify(data, null, 2));
         return true;
     } catch (error) {
-        console.error('Error writing feedback:', error);
+        console.error('Error writing feedback data:', error);
         return false;
     }
 }
 
-// API Routes
-
-// GET - Retrieve all feedback (for admin purposes)
-app.get('/api/feedback', async (req, res) => {
+// API endpoint to submit feedback
+app.post('/api/submit-feedback', async (req, res) => {
     try {
-        const feedback = await readFeedback();
-        res.json({
-            success: true,
-            count: feedback.length,
-            data: feedback
-        });
-    } catch (error) {
-        res.status(500).json({
-            success: false,
-            message: 'Error retrieving feedback'
-        });
-    }
-});
-
-// POST - Submit new feedback
-app.post('/api/early-access', async (req, res) => {
-    try {
-        const { name, email, instagram, prompt } = req.body;
+        const {
+            role,
+            name,
+            email,
+            instagram,
+            last_campaign,
+            worst_part,
+            one_thing
+        } = req.body;
 
         // Validate required fields
-        if (!name || !email || !instagram || !prompt) {
+        if (!role || !name || !email || !instagram || !last_campaign || !worst_part || !one_thing) {
             return res.status(400).json({
                 success: false,
                 message: 'All fields are required'
             });
         }
 
-        // Basic email validation
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        if (!emailRegex.test(email)) {
-            return res.status(400).json({
-                success: false,
-                message: 'Please enter a valid email address'
-            });
-        }
-
-        // Read existing feedback
-        const existingFeedback = await readFeedback();
-
-        // Check for duplicate email
-        const duplicateEmail = existingFeedback.find(entry => entry.email.toLowerCase() === email.toLowerCase());
-        if (duplicateEmail) {
-            return res.status(409).json({
-                success: false,
-                message: 'This email has already been registered for early access'
-            });
-        }
-
-        // Create new feedback entry
-        const newEntry = {
-            id: Date.now().toString(),
+        // Create feedback object
+        const feedbackEntry = {
+            id: Date.now() + Math.random().toString(36).substr(2, 9),
+            role,
+            name,
+            email,
+            instagram,
+            last_campaign,
+            worst_part,
+            one_thing,
             timestamp: new Date().toISOString(),
-            name: name.trim(),
-            email: email.toLowerCase().trim(),
-            instagram: instagram.trim().replace('@', ''), // Remove @ if user added it
-            prompt: prompt.trim(),
-            status: 'pending', // For tracking invitation status
-            ipAddress: req.ip,
-            userAgent: req.get('User-Agent')
+            ip: req.ip || req.connection.remoteAddress
         };
 
-        // Add to feedback array
-        existingFeedback.push(newEntry);
-
-        // Write to file
-        const writeSuccess = await writeFeedback(existingFeedback);
-
+        // Read existing data
+        const existingData = await readFeedbackData();
+        
+        // Add new entry
+        existingData.push(feedbackEntry);
+        
+        // Write back to file
+        const writeSuccess = await writeFeedbackData(existingData);
+        
         if (writeSuccess) {
-            console.log(`New early access request: ${email}`);
+            console.log('New feedback submitted:', feedbackEntry.id);
             res.json({
                 success: true,
-                message: 'Thank you! Your request has been submitted successfully.',
-                id: newEntry.id
+                message: 'Feedback submitted successfully',
+                id: feedbackEntry.id
             });
         } else {
-            res.status(500).json({
-                success: false,
-                message: 'Error saving your request. Please try again.'
-            });
+            throw new Error('Failed to save feedback');
         }
 
     } catch (error) {
-        console.error('Error processing early access request:', error);
-        res.status(500).json({
-            success: false,
-            message: 'Internal server error. Please try again later.'
-        });
-    }
-});
-
-// DELETE - Remove feedback entry (for admin purposes)
-app.delete('/api/feedback/:id', async (req, res) => {
-    try {
-        const { id } = req.params;
-        const existingFeedback = await readFeedback();
-        
-        const filteredFeedback = existingFeedback.filter(entry => entry.id !== id);
-        
-        if (filteredFeedback.length === existingFeedback.length) {
-            return res.status(404).json({
-                success: false,
-                message: 'Feedback entry not found'
-            });
-        }
-
-        const writeSuccess = await writeFeedback(filteredFeedback);
-        
-        if (writeSuccess) {
-            res.json({
-                success: true,
-                message: 'Feedback entry deleted successfully'
-            });
-        } else {
-            res.status(500).json({
-                success: false,
-                message: 'Error deleting feedback entry'
-            });
-        }
-    } catch (error) {
-        console.error('Error deleting feedback:', error);
+        console.error('Error submitting feedback:', error);
         res.status(500).json({
             success: false,
             message: 'Internal server error'
@@ -188,39 +126,79 @@ app.delete('/api/feedback/:id', async (req, res) => {
     }
 });
 
+// API endpoint to get all feedback (for admin purposes)
+app.get('/api/feedback', async (req, res) => {
+    try {
+        const feedbackData = await readFeedbackData();
+        res.json({
+            success: true,
+            data: feedbackData,
+            count: feedbackData.length
+        });
+    } catch (error) {
+        console.error('Error getting feedback:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error retrieving feedback'
+        });
+    }
+});
+
+// API endpoint to get feedback stats
+app.get('/api/feedback/stats', async (req, res) => {
+    try {
+        const feedbackData = await readFeedbackData();
+        
+        const stats = {
+            total: feedbackData.length,
+            byRole: {
+                creator: feedbackData.filter(f => f.role === 'creator').length,
+                promoter: feedbackData.filter(f => f.role === 'promoter').length,
+                other: feedbackData.filter(f => f.role === 'other').length
+            },
+            recent24h: feedbackData.filter(f => {
+                const entryDate = new Date(f.timestamp);
+                const now = new Date();
+                return (now - entryDate) < (24 * 60 * 60 * 1000);
+            }).length,
+            recent7days: feedbackData.filter(f => {
+                const entryDate = new Date(f.timestamp);
+                const now = new Date();
+                return (now - entryDate) < (7 * 24 * 60 * 60 * 1000);
+            }).length
+        };
+        
+        res.json({
+            success: true,
+            stats
+        });
+    } catch (error) {
+        console.error('Error getting feedback stats:', error);
+        res.status(500).json({
+            success: false,
+            message: 'Error retrieving feedback stats'
+        });
+    }
+});
+
 // Health check endpoint
-app.get('/api/health', (req, res) => {
-    res.json({
-        success: true,
-        message: 'Togetai API is running',
-        timestamp: new Date().toISOString()
+app.get('/health', (req, res) => {
+    res.json({ 
+        status: 'OK', 
+        timestamp: new Date().toISOString(),
+        server: 'Togetai Feedback API'
     });
 });
 
-// Serve index.html for root route
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
-// Handle 404 for API routes
-app.use('/api/*', (req, res) => {
-    res.status(404).json({
-        success: false,
-        message: 'API endpoint not found'
-    });
-});
-
-// Start server
+// Initialize and start server
 async function startServer() {
-    await initializeFeedbackFile();
+    await initializeDataFile();
     
     app.listen(PORT, () => {
-        console.log(`🚀 Togetai server running on http://localhost:${PORT}`);
-        console.log(`📝 Feedback data will be saved to: ${feedbackPath}`);
-        console.log(`🌐 API endpoints:`);
-        console.log(`   GET  /api/health - Health check`);
-        console.log(`   POST /api/early-access - Submit early access request`);
-        console.log(`   GET  /api/feedback - View all feedback (admin)`);
+        console.log(`🚀 Server running on port ${PORT}`);
+        console.log(`📁 Feedback data saved to: ${FEEDBACK_FILE}`);
+        console.log(`🌐 Health check: http://localhost:${PORT}/health`);
+        console.log(`📊 View feedback: http://localhost:${PORT}/api/feedback`);
     });
 }
 

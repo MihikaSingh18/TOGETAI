@@ -1339,36 +1339,45 @@
             });
         });
 
-        // Function to save form data to JSON file
+        // Function to save form data to JSON file via backend API
         async function saveToJSONFile(formData) {
             try {
-                // For demonstration - in a real environment this would need a backend
-                // This shows how the data would be structured for saving
-                console.log('Form data to save:', formData);
+                console.log('Submitting form data to backend:', formData);
                 
-                // Simulate reading existing feedback.json file
-                let existingData = [];
-                try {
-                    // In a real environment, you would read from the actual file
-                    const existingJson = localStorage.getItem('togetai_feedback') || '[]';
-                    existingData = JSON.parse(existingJson);
-                } catch (e) {
-                    existingData = [];
+                const response = await fetch('/api/submit-feedback', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(formData)
+                });
+                
+                const result = await response.json();
+                
+                if (!response.ok) {
+                    throw new Error(result.message || 'Failed to submit feedback');
                 }
                 
-                // Add new submission
-                existingData.push(formData);
-                
-                // Save back to storage (in real environment, this would write to feedback.json)
-                localStorage.setItem('togetai_feedback', JSON.stringify(existingData, null, 2));
-                
-                // Log the JSON structure that would be saved to feedback.json
-                console.log('Updated feedback.json structure:', JSON.stringify(existingData, null, 2));
-                
+                console.log('✅ Feedback saved successfully:', result);
                 return true;
+                
             } catch (error) {
-                console.error('Error saving to JSON:', error);
-                return false;
+                console.error('Error saving to backend:', error);
+                
+                // Fallback to localStorage for development/testing
+                console.log('📝 Falling back to localStorage...');
+                try {
+                    let existingData = [];
+                    const existingJson = localStorage.getItem('togetai_feedback') || '[]';
+                    existingData = JSON.parse(existingJson);
+                    existingData.push(formData);
+                    localStorage.setItem('togetai_feedback', JSON.stringify(existingData, null, 2));
+                    console.log('💾 Saved to localStorage as fallback');
+                    return true;
+                } catch (fallbackError) {
+                    console.error('Even fallback failed:', fallbackError);
+                    return false;
+                }
             }
         }
 
