@@ -1339,7 +1339,59 @@
             });
         });
 
-        // Form submission handler
+        // Function to save form data to JSON file
+        async function saveToJSONFile(formData) {
+            try {
+                // For demonstration - in a real environment this would need a backend
+                // This shows how the data would be structured for saving
+                console.log('Form data to save:', formData);
+                
+                // Simulate reading existing feedback.json file
+                let existingData = [];
+                try {
+                    // In a real environment, you would read from the actual file
+                    const existingJson = localStorage.getItem('togetai_feedback') || '[]';
+                    existingData = JSON.parse(existingJson);
+                } catch (e) {
+                    existingData = [];
+                }
+                
+                // Add new submission
+                existingData.push(formData);
+                
+                // Save back to storage (in real environment, this would write to feedback.json)
+                localStorage.setItem('togetai_feedback', JSON.stringify(existingData, null, 2));
+                
+                // Log the JSON structure that would be saved to feedback.json
+                console.log('Updated feedback.json structure:', JSON.stringify(existingData, null, 2));
+                
+                return true;
+            } catch (error) {
+                console.error('Error saving to JSON:', error);
+                return false;
+            }
+        }
+
+        // Function to download the feedback data as JSON file
+        function downloadFeedbackJSON() {
+            try {
+                const feedbackData = localStorage.getItem('togetai_feedback') || '[]';
+                const blob = new Blob([feedbackData], { type: 'application/json' });
+                const url = URL.createObjectURL(blob);
+                const a = document.createElement('a');
+                a.href = url;
+                a.download = 'feedback.json';
+                document.body.appendChild(a);
+                a.click();
+                document.body.removeChild(a);
+                URL.revokeObjectURL(url);
+                console.log('Feedback JSON downloaded');
+            } catch (error) {
+                console.error('Error downloading JSON:', error);
+            }
+        }
+
+        // Form submission handler with JSON saving
         document.querySelector('.signup-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             const submitBtn = this.querySelector('.submit-btn');
@@ -1362,21 +1414,26 @@
             submitBtn.disabled = true;
             
             try {
-                // Simulate API call
-                await new Promise(resolve => setTimeout(resolve, 1500));
+                // Save to JSON file structure
+                const saveSuccess = await saveToJSONFile(formData);
                 
-                // Store in memory for demonstration
-                console.log('Form data submitted:', formData);
-                
-                submitBtn.textContent = 'Thank you! Request submitted successfully!';
-                submitBtn.style.background = '#059669';
-                
-                setTimeout(() => {
-                    submitBtn.textContent = originalText;
-                    submitBtn.disabled = false;
-                    submitBtn.style.background = '#10b981';
-                    this.reset();
-                }, 3000);
+                if (saveSuccess) {
+                    submitBtn.textContent = 'Thank you! Request submitted successfully!';
+                    submitBtn.style.background = '#059669';
+                    
+                    // Show a notification about the saved data
+                    console.log('✅ Form response saved to feedback structure');
+                    console.log('📁 In a real environment, this would be saved to feedback.json');
+                    
+                    setTimeout(() => {
+                        submitBtn.textContent = originalText;
+                        submitBtn.disabled = false;
+                        submitBtn.style.background = '#10b981';
+                        this.reset();
+                    }, 3000);
+                } else {
+                    throw new Error('Failed to save form data');
+                }
                 
             } catch (error) {
                 console.error('Error submitting form:', error);
@@ -1500,6 +1557,15 @@
                 navLinks.classList.remove('mobile-open');
             }
         });
+
+        // Console logging for development - shows the JSON structure
+        console.log('🚀 Togetai Landing Page Loaded');
+        console.log('📝 Form submissions will be structured for feedback.json');
+        console.log('🔧 In development: Check console for JSON structure when form is submitted');
+        
+        // Add a helper function accessible from console for downloading current data
+        window.downloadCurrentFeedback = downloadFeedbackJSON;
+        console.log('💡 Tip: Run downloadCurrentFeedback() in console to download current feedback data');
     </script>
 </body>
 </html>
