@@ -24,9 +24,7 @@
                 flex-direction: column;
                 align-items: flex-start;
             }
-
         }
-
 
         @media (max-width: 480px){
             body{
@@ -35,7 +33,6 @@
             .header{
                 padding: 10px 15px;
             }
-
         }
 
         /* Header */
@@ -687,6 +684,40 @@
             box-shadow: 0 15px 30px rgba(0, 255, 136, 0.4);
         }
 
+        .submit-btn:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        /* Success Message */
+        .success-message {
+            background: rgba(0, 255, 136, 0.1);
+            border: 2px solid #00ff88;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+            color: #00ff88;
+            display: none;
+        }
+
+        .success-message.show {
+            display: block;
+            animation: fadeInUp 0.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
         /* Responsive */
         @media (max-width: 768px) {
             .header {
@@ -868,59 +899,64 @@
             <div class="cta-feature">Priority access for early feedback</div>
         </div>
 
-        <form class="signup-form" style="margin-top: 50px;" method="post" action="/submit-signup">
-  <div class="form-group">
-    <label for="role" class="form-label">I am a *</label>
-    <select id="role" name="role" class="form-input" required>
-      <option value="" disabled selected>Select one</option>
-      <option value="creator">Creator</option>
-      <option value="promoter">Promoter</option>
-      <option value="other">Other</option>
-    </select>
-  </div>
+        <form class="signup-form" id="signupForm" style="margin-top: 50px;">
+            <div class="form-group">
+                <label for="role" class="form-label">I am a *</label>
+                <select id="role" name="role" class="form-input" required>
+                    <option value="" disabled selected>Select one</option>
+                    <option value="creator">Creator</option>
+                    <option value="promoter">Promoter</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
 
-  <div class="form-group">
-    <label for="fullName" class="form-label">Name *</label>
-    <input id="fullName" name="name" type="text" class="form-input" placeholder="Your full name" required>
-  </div>
+            <div class="form-group">
+                <label for="fullName" class="form-label">Name *</label>
+                <input id="fullName" name="name" type="text" class="form-input" placeholder="Your full name" required>
+            </div>
 
-  <div class="form-group">
-    <label for="email" class="form-label">Email *</label>
-    <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required>
-  </div>
+            <div class="form-group">
+                <label for="email" class="form-label">Email *</label>
+                <input id="email" name="email" type="email" class="form-input" placeholder="you@example.com" required>
+            </div>
 
-  <div class="form-group">
-    <label for="instagram" class="form-label">Instagram Username *</label>
-    <input id="instagram" name="instagram" type="text" class="form-input" placeholder="@yourhandle" required>
-  </div>
+            <div class="form-group">
+                <label for="instagram" class="form-label">Instagram Username *</label>
+                <input id="instagram" name="instagram" type="text" class="form-input" placeholder="@yourhandle" required>
+            </div>
 
-  <div class="form-group">
-    <label for="lastCampaign" class="form-label">Tell us about the last campaign or collaboration you worked on *</label>
-    <textarea id="lastCampaign" name="last_campaign" class="form-input form-textarea" placeholder="Briefly describe the campaign and how you found the brand/creator" rows="5" required></textarea>
-  </div>
+            <div class="form-group">
+                <label for="lastCampaign" class="form-label">Tell us about the last campaign or collaboration you worked on *</label>
+                <textarea id="lastCampaign" name="last_campaign" class="form-input form-textarea" placeholder="Briefly describe the campaign and how you found the brand/creator" rows="5" required></textarea>
+            </div>
 
-  <div class="form-group">
-    <label for="worstPart" class="form-label">What's the worst part of that whole process? *</label>
-    <textarea id="worstPart" name="worst_part" class="form-input form-textarea" placeholder="What was the hardest/frustrating step? Have you used any tools/services?" rows="4" required></textarea>
-  </div>
+            <div class="form-group">
+                <label for="worstPart" class="form-label">What's the worst part of that whole process? *</label>
+                <textarea id="worstPart" name="worst_part" class="form-input form-textarea" placeholder="What was the hardest/frustrating step? Have you used any tools/services?" rows="4" required></textarea>
+            </div>
 
-  <div class="form-group">
-    <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
-    <select id="platformHelp" name="platform_help" class="form-input" required>
-      <option value="" disabled selected>Choose one</option>
-      <option value="yes">Yes</option>
-      <option value="no">No</option>
-      <option value="maybe">Maybe / Unsure</option>
-    </select>
-  </div>
+            <div class="form-group">
+                <label for="platformHelp" class="form-label">Does this platform look like it could help with the 'worst part' you just mentioned? *</label>
+                <select id="platformHelp" name="platform_help" class="form-input" required>
+                    <option value="" disabled selected>Choose one</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                    <option value="maybe">Maybe / Unsure</option>
+                </select>
+            </div>
 
-  <div class="form-group">
-    <label for="oneThing" class="form-label">What’s one thing that would make this a lot more useful for you? *</label>
-    <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
-  </div>
+            <div class="form-group">
+                <label for="oneThing" class="form-label">What's one thing that would make this a lot more useful for you? *</label>
+                <textarea id="oneThing" name="one_thing" class="form-input form-textarea" placeholder="One feature, improvement, or workflow that would help you most" rows="4" required></textarea>
+            </div>
 
-  <button type="submit" class="submit-btn">Request early access</button>
-</form>
+            <button type="submit" class="submit-btn" id="submitBtn">Request early access</button>
+            
+            <div class="success-message" id="successMessage">
+                <h3 style="color: #00ff88; margin-bottom: 10px;">🎉 Thank you!</h3>
+                <p>Your feedback has been saved successfully. We'll be in touch soon!</p>
+            </div>
+        </form>
     </section>
 
     <!-- Footer -->
@@ -979,63 +1015,52 @@
             });
         });
 
-        // Form submission handler with file saving
-        document.querySelector('.signup-form').addEventListener('submit', async function(e) {
+        // Form submission handler
+        document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
-            const submitBtn = this.querySelector('.submit-btn');
+            
+            const submitBtn = document.getElementById('submitBtn');
+            const successMessage = document.getElementById('successMessage');
             const originalText = submitBtn.textContent;
             
             // Get form data
-            const formData = {
-                name: this.querySelector('input[placeholder="Your full name"]').value,
-                email: this.querySelector('input[placeholder="you@example.com"]').value,
-                instagram: this.querySelector('input[placeholder="@yourhandle"]').value,
-                prompt: this.querySelector('textarea').value,
-                timestamp: new Date().toISOString(),
-                id: Date.now() + Math.random().toString(36).substr(2, 9)
-            };
+            const formData = new FormData(this);
+            const data = Object.fromEntries(formData);
             
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
             
             try {
-                // Simulate saving to feedback.json file
-                // Note: In a real application, this would be handled by a backend server
-                console.log('Saving feedback data:', formData);
+                const response = await fetch('/submit-signup', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
                 
-                // Store in localStorage as a fallback (since we can't actually write files from browser)
-                const existingFeedback = JSON.parse(localStorage.getItem('togetai_feedback') || '[]');
-                existingFeedback.push(formData);
-                localStorage.setItem('togetai_feedback', JSON.stringify(existingFeedback, null, 2));
+                const result = await response.json();
                 
-                // Download as JSON file for demonstration
-                const dataStr = JSON.stringify(existingFeedback, null, 2);
-                const dataBlob = new Blob([dataStr], {type: 'application/json'});
-                const url = URL.createObjectURL(dataBlob);
-                const downloadLink = document.createElement('a');
-                downloadLink.href = url;
-                downloadLink.download = 'feedback.json';
-                downloadLink.style.display = 'none';
-                document.body.appendChild(downloadLink);
-                downloadLink.click();
-                document.body.removeChild(downloadLink);
-                URL.revokeObjectURL(url);
-                
-                setTimeout(() => {
-                    submitBtn.textContent = 'Thank you! Data saved successfully!';
+                if (result.success) {
+                    submitBtn.textContent = 'Success! ✨';
                     submitBtn.style.background = '#00cc6b';
+                    successMessage.classList.add('show');
                     
+                    // Reset form after 3 seconds
                     setTimeout(() => {
+                        this.reset();
                         submitBtn.textContent = originalText;
                         submitBtn.disabled = false;
                         submitBtn.style.background = '#00ff88';
-                        this.reset();
+                        successMessage.classList.remove('show');
                     }, 3000);
-                }, 1500);
+                } else {
+                    throw new Error(result.message || 'Submission failed');
+                }
                 
             } catch (error) {
-                console.error('Error saving feedback:', error);
-                submitBtn.textContent = 'Error saving data. Please try again.';
+                console.error('Error submitting form:', error);
+                submitBtn.textContent = 'Error - Try again';
                 submitBtn.style.background = '#ff4444';
                 
                 setTimeout(() => {
@@ -1069,7 +1094,7 @@
             observer.observe(card);
         });
 
-        // Dynamic neural network connections - Enhanced
+        // Dynamic neural network connections
         function createConnections() {
             const brain = document.querySelector('.neural-network');
             const nodes = brain.querySelectorAll('.node');
@@ -1077,7 +1102,7 @@
             // Remove existing connections
             brain.querySelectorAll('.connection').forEach(conn => conn.remove());
             
-            // Create more connections between nodes
+            // Create connections between nodes
             const connectionPairs = [
                 [0, 1], [1, 2], [2, 3], [3, 4], [4, 0],
                 [0, 2], [1, 3], [2, 4], [0, 3], [1, 4],
@@ -1130,15 +1155,6 @@
                 this.style.color = '#888';
             });
         });
-
-        // Add responsive behavior for mobile
-        @media (max-width: 768px) {
-            footer > div:first-child {
-                grid-template-columns: 1fr !important
-                gap: 40px !important;
-                text-align: center;
-            }
-        }
     </script>
 </body>
 </html>
