@@ -1015,7 +1015,7 @@
             });
         });
 
-        // Form submission handler
+        // Form submission handler - UPDATED FOR SUPABASE
         document.getElementById('signupForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
@@ -1023,20 +1023,28 @@
             const successMessage = document.getElementById('successMessage');
             const originalText = submitBtn.textContent;
             
-            // Get form data
-            const formData = new FormData(this);
-            const data = Object.fromEntries(formData);
+            // Map form fields to database fields correctly
+            const formData = {
+                role: document.getElementById('role').value,
+                name: document.getElementById('fullName').value,
+                email: document.getElementById('email').value,
+                instagram: document.getElementById('instagram').value,
+                last_campaign: document.getElementById('lastCampaign').value,
+                worst_part: document.getElementById('worstPart').value,
+                platform_help: document.getElementById('platformHelp').value,
+                one_thing: document.getElementById('oneThing').value
+            };
             
             submitBtn.textContent = 'Submitting...';
             submitBtn.disabled = true;
             
             try {
-                const response = await fetch('/submit-signup', {
+                const response = await fetch('/api/feedback', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
-                    body: JSON.stringify(data)
+                    body: JSON.stringify(formData)
                 });
                 
                 const result = await response.json();
