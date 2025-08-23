@@ -1,6 +1,7 @@
 {
   "name": "togetai-landing",
   "version": "1.0.0",
+  "type": "module",
   "description": "Landing page for Togetai - AI-powered creator and promoter platform",
   "main": "server.js",
   "scripts": {
