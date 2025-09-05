@@ -1,0 +1,20 @@
+const express = require('express');
+const supabase = require('./supabaseClient'); // import client
+const app = express();
+
+app.use(express.json());
+
+app.post('/api/submit-feedback', async (req, res) => {
+    try {
+        const { data, error } = await supabase
+            .from('feedback')
+            .insert([req.body]);
+
+        if (error) throw error;
+
+        res.status(200).json({ success: true, data });
+    } catch (err) {
+        console.error('Error inserting feedback:', err.message);
+        res.status(500).json({ success: false, error: err.message });
+    }
+});
