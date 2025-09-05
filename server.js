@@ -20,11 +20,17 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 // Middleware
 app.use(cors());
 app.use(express.json());
+
+// Serve static files from public directory
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Serve the HTML file
-app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
+// Health check endpoint
+app.get('/api/health', (req, res) => {
+  res.json({ 
+    status: 'OK', 
+    timestamp: new Date().toISOString(),
+    message: 'Togetai Backend Server is running!'
+  });
 });
 
 // Submit feedback endpoint
@@ -86,58 +92,56 @@ app.post('/api/submit-feedback', async (req, res) => {
     console.log('✅ Data saved to Supabase:', data);
 
     // ✅ Send thank you email
-    // Replace the email sending section in your code with this:
-
-try {
-  const emailResult = await resend.emails.send({
-    from: 'Togetai <no-reply@togetai.com>',
-    to: [email],
-    subject: 'Welcome to Togetai - You are now a part of Togetai! 🚀',
-    html: `
-      <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">
-        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
-          <h1 style="color: white; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Togetai! 🚀</h1>
-          <p style="color: #e0e6ed; margin: 10px 0 0 0; font-size: 16px;">You're now part of something amazing!</p>
-        </div>
-        
-        <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
-          <h2 style="color: #333; margin-top: 0;">Hi ${name}! 👋</h2>
-          
-          <p style="color: #555; line-height: 1.6; font-size: 16px;">
-            Thanks for joining - we're excited to have you on board! 🎉 Your submission has been successfully received, and you're now one of the first to experience what we're building at Togetai.
-          </p>
-          
-          <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
-            <h3 style="color: #667eea; margin-top: 0; font-size: 18px;">What's next:</h3>
-            <ul style="color: #555; line-height: 1.8; padding-left: 20px;">
-              <li>✅ You're on our exclusive early access list</li>
-              <li>📧 We'll send you platform updates and launch notifications</li>
-              <li>🎯 You'll get priority access when we launch</li>
-            </ul>
-          </div>
-          
-          <div style="text-align: center; margin: 30px 0;">
-            <div style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 25px; font-weight: bold; text-decoration: none;">
-              🚀 Get Ready for Launch!
+    try {
+      const emailResult = await resend.emails.send({
+        from: 'Togetai <no-reply@togetai.com>',
+        to: [email],
+        subject: 'Welcome to Togetai - You are now a part of Togetai! 🚀',
+        html: `
+          <div style="font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px; background-color: #f8f9fa;">
+            <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 30px; border-radius: 10px; text-align: center; margin-bottom: 20px;">
+              <h1 style="color: white; margin: 0; font-size: 28px; font-weight: bold;">Welcome to Togetai! 🚀</h1>
+              <p style="color: #e0e6ed; margin: 10px 0 0 0; font-size: 16px;">You're now part of something amazing!</p>
+            </div>
+            
+            <div style="background: white; padding: 30px; border-radius: 10px; box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);">
+              <h2 style="color: #333; margin-top: 0;">Hi ${name}! 👋</h2>
+              
+              <p style="color: #555; line-height: 1.6; font-size: 16px;">
+                Thanks for joining - we're excited to have you on board! 🎉 Your submission has been successfully received, and you're now one of the first to experience what we're building at Togetai.
+              </p>
+              
+              <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+                <h3 style="color: #667eea; margin-top: 0; font-size: 18px;">What's next:</h3>
+                <ul style="color: #555; line-height: 1.8; padding-left: 20px;">
+                  <li>✅ You're on our exclusive early access list</li>
+                  <li>📧 We'll send you platform updates and launch notifications</li>
+                  <li>🎯 You'll get priority access when we launch</li>
+                </ul>
+              </div>
+              
+              <div style="text-align: center; margin: 30px 0;">
+                <div style="display: inline-block; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 12px 24px; border-radius: 25px; font-weight: bold; text-decoration: none;">
+                  🚀 Get Ready for Launch!
+                </div>
+              </div>
+              
+              <hr style="border: none; height: 1px; background: #e9ecef; margin: 30px 0;">
+              
+              <p style="color: #666; text-align: center; font-size: 14px; margin: 0;">
+                Best regards,<br>
+                <strong style="color: #667eea;">Team Togetai</strong>
+              </p>
+            </div>
+            
+            <div style="text-align: center; margin-top: 20px; padding: 20px;">
+              <p style="color: #888; font-size: 12px; margin: 0;">
+                © 2025 Togetai. All rights reserved.
+              </p>
             </div>
           </div>
-          
-          <hr style="border: none; height: 1px; background: #e9ecef; margin: 30px 0;">
-          
-          <p style="color: #666; text-align: center; font-size: 14px; margin: 0;">
-            Best regards,<br>
-            <strong style="color: #667eea;">Team Togetai</strong>
-          </p>
-        </div>
-        
-        <div style="text-align: center; margin-top: 20px; padding: 20px;">
-          <p style="color: #888; font-size: 12px; margin: 0;">
-            © 2025 Togetai. All rights reserved.
-          </p>
-        </div>
-      </div>
-    `,
-    text: `
+        `,
+        text: `
 Hi ${name}!
 
 Thanks for joining - we're excited to have you on board! 🎉 
@@ -152,14 +156,14 @@ Best regards,
 Team Togetai
 
 © 2025 Togetai. All rights reserved.
-    `
-  });
+        `
+      });
 
-  console.log('✅ Thank you email sent:', emailResult);
-} catch (emailError) {
-  console.error('⚠️ Email sending failed:', emailError);
-  // Don't fail the request if email fails
-}
+      console.log('✅ Thank you email sent:', emailResult);
+    } catch (emailError) {
+      console.error('⚠️ Email sending failed:', emailError);
+      // Don't fail the request if email fails
+    }
 
     // ✅ Final success response
     res.status(200).json({
@@ -178,22 +182,41 @@ Team Togetai
   }
 });
 
-// Health check endpoint
-app.get('/api/health', (req, res) => {
-  res.json({ 
-    status: 'OK', 
-    timestamp: new Date().toISOString(),
-    message: 'Togetai Backend Server is running!'
-  });
+// Serve the main HTML file for root route and all non-API routes
+app.get('*', (req, res) => {
+  // Don't serve HTML for API routes
+  if (req.path.startsWith('/api/')) {
+    return res.status(404).json({ error: 'API endpoint not found' });
+  }
+  
+  const htmlPath = path.join(__dirname, 'index.html');
+  console.log('Serving HTML from:', htmlPath);
+  
+  // Check if file exists
+  const fs = require('fs');
+  if (fs.existsSync(htmlPath)) {
+    res.sendFile(htmlPath);
+  } else {
+    console.error('❌ index.html not found at:', htmlPath);
+    res.status(404).send(`
+      <h1>File not found</h1>
+      <p>Looking for index.html at: ${htmlPath}</p>
+      <p>Current directory: ${__dirname}</p>
+      <p>Files in directory: ${fs.readdirSync(__dirname).join(', ')}</p>
+    `);
+  }
 });
 
-// Start server
-app.listen(PORT, () => {
-  console.log(`🚀 Togetai Backend Server running on port ${PORT}`);
-  console.log(`📱 Frontend available at: http://localhost:${PORT}`);
-  console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
-  console.log(`📧 Email service: ${process.env.RESEND_API_KEY ? '✅ Configured' : '❌ Not configured'}`);
-  console.log(`💾 Database: ${process.env.SUPABASE_URL ? '✅ Connected' : '❌ Not configured'}`);
-});
-
+// For Vercel, export the Express app
 module.exports = app;
+
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  app.listen(PORT, () => {
+    console.log(`🚀 Togetai Backend Server running on port ${PORT}`);
+    console.log(`📱 Frontend available at: http://localhost:${PORT}`);
+    console.log(`🔗 Health check: http://localhost:${PORT}/api/health`);
+    console.log(`📧 Email service: ${process.env.RESEND_API_KEY ? '✅ Configured' : '❌ Not configured'}`);
+    console.log(`💾 Database: ${process.env.SUPABASE_URL ? '✅ Connected' : '❌ Not configured'}`);
+  });
+}
